@@ -194,7 +194,7 @@
     // 获取每页的页码数
     var pageSize = '10'
     var useLeancloud = ''
-    var useComment = ('false' === 'true')
+    var useComment = ('true' === 'true')
     $.getJSON('/content.json', function (json) {
       $('#search-breadcrumb').append(`搜索'${s}'的结果`)
       var result = getArticles(s, 'posts', json).concat(getArticles(s, 'pages', json))
@@ -218,7 +218,7 @@
       	var [month, day] = article.date.split('-')
         ''
         ''
-        var defaultPreview = '/imgs/preview/preview3.jpg'
+        var defaultPreview = '/imgs/preview/preview2.jpg'
         var preview = article.preview ? article.preview : defaultPreview
         var path = '/' + article.path
         resultList.append(`<div class="article well clearfix article-body article-excerpt" data-aos="flip-up">
@@ -456,13 +456,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/1970/01/01/hello-world/">Hello World</a>
+                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
+                    <a href="/1970/01/01/hello-world/">Hello World</a>
                 </span>
             </li>
             
@@ -495,7 +495,7 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/other/" style="font-size: 8.493256298085946px;" class="tag-cloud-link">other</a>
+    <a href="/tags/other/" style="font-size: 19.118993455014735px;" class="tag-cloud-link">other</a>
     
 </div>
                 
@@ -606,6 +606,30 @@
 <script src="/js/blog.js"></script>
 
 
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Wed Oct 07 2020 14:28:43 GMT+0800'
+      window.commentConfig.owner = 'clamee'
+      window.commentConfig.repo = 'https://clamee.github.io'
+      window.commentConfig.client_id = '3cd96a382b4a95085ef0'
+      window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Wed Oct 07 2020 14:28:43 GMT+0800',
+        owner: 'clamee',
+        repo: 'https://clamee.github.io',
+        client_id: '3cd96a382b4a95085ef0',
+        client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
+        redirect_uri: ''
+      }
+    }
+</script>
+
+<script src="/js/comment/gitment.js"></script>
 
 
 </html>

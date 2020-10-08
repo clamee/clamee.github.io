@@ -287,7 +287,7 @@
                 <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">
                     <div class="img">
                         
-                        <img src="/imgs/preview/preview2.jpg" alt="Welcome to clamee&#39;s new blog!">
+                        <img src="/imgs/preview/preview4.jpg" alt="Welcome to clamee&#39;s new blog!">
                     </div>
                     <div class="info">
                         
@@ -326,7 +326,7 @@
             <p style="text-align: center;">
                 <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">
                     
-                    <img src="/imgs/preview/preview4.jpg" alt="Welcome to clamee&#39;s new blog!">
+                    <img src="/imgs/preview/preview2.jpg" alt="Welcome to clamee&#39;s new blog!">
                 </a>
             </p>
         </div>
@@ -364,6 +364,8 @@
 </div>
 
 <!-- 加上这段代码原因： gitment在首页加载时, 如果找不到对应的控件会报错，此处加上，同时设置为none，防止报错 -->   
+  
+    <div id="comments-template" style="display:none"></div> 
 
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
@@ -449,13 +451,13 @@
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/1970/01/01/hello-world/">Hello World</a>
+                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
                 </span>
             </li>
             
             <li class="list-group-item">
                 <span class="post-title">
-                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
+                    <a href="/1970/01/01/hello-world/">Hello World</a>
                 </span>
             </li>
             
@@ -488,7 +490,7 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/other/" style="font-size: 10.891350019319653px;" class="tag-cloud-link">other</a>
+    <a href="/tags/other/" style="font-size: 16.594622293500183px;" class="tag-cloud-link">other</a>
     
 </div>
                 
@@ -599,6 +601,30 @@
 <script src="/js/blog.js"></script>
 
 
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = ''
+      window.commentConfig.owner = 'clamee'
+      window.commentConfig.repo = 'https://clamee.github.io'
+      window.commentConfig.client_id = '3cd96a382b4a95085ef0'
+      window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: '',
+        owner: 'clamee',
+        repo: 'https://clamee.github.io',
+        client_id: '3cd96a382b4a95085ef0',
+        client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
+        redirect_uri: ''
+      }
+    }
+</script>
+
+<script src="/js/comment/gitment.js"></script>
 
 
 </html>
