@@ -10,7 +10,7 @@
     
     
     
-    <title>archive_a | Clamee&#39;s Blog</title>
+    <title>二次剩余学习笔记 | Clamee&#39;s Blog</title>
     <link href="http://example.com" rel="prefetch" />
 
     
@@ -107,7 +107,7 @@
                 
                 
                 
-                <li class="current">
+                <li class="">
                     <a href="/archives">
                         <i class="fa fa-archive"></i>归档
                     </a>
@@ -174,19 +174,34 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-8 gal-right" id="mainstay">
-                    <article class="article well article-body" id="article-archive">
+                    
+<article class="article well article-body" id="article">
     <div class="breadcrumb">
         <i class="fa fa-home"></i>
         <a href="http://example.com">Clamee&#39;s Blog</a>
         >
-        <span>归档</span>
+        <span>二次剩余学习笔记</span>
     </div>
     <!-- 大型设备详细文章 -->
     <div class="hidden-xs">
         <div class="title-article">
             <h1>
-                <a href="/archives">归档</a>
+                <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
             </h1>
+        </div>
+        <div class="tag-article">
+            
+            <span class="label label-gal">
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+            </span>
+            
+            <span class="label label-gal">
+                <i class="fa fa-calendar"></i> 2020-10-11
+            </span>
+            
         </div>
     </div>
     <!-- 小型设备详细文章 -->
@@ -194,44 +209,71 @@
         <center>
             <div class="title-article">
                 <h4>
-                    <a href="/archives">归档</a>
+                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
                 </h4>
             </div>
+            <p>
+                <i class="fa fa-calendar"></i> 2020-10-11
+            </p>
+            <p>
+                
+                <i class="fa fa-tags"></i>
+                
+                <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
+                
+                
+                
+            </p>
         </center>
     </div>
-    <div class="content-article" style="margin-top: 30px;">
-        
-        
-            <h1 style="font-size: 24px; margin-top: 40px;">2020年</h1>
-            
-        <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-            
-             
-             
-                        <a href="/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/">【游记】CSP 游记</a>
-                        <br>
-            
-             
-                        <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
-                        <br>
-            
-             
-                        <a href="/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/">【题解】[HA2009]求回文串</a>
-                        <br>
-            
-             
-                        </div>
-                    <h1 style="font-size: 24px; margin-top: 40px;">1926年</h1>
-                    <div class="alert alert-info" style="font-size: 14px; line-height: 2; font-weight: bold;">
-                 
-             
-                        <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
-                        <br>
-            
-                    </div>
-        
+    <div class="content-article">
+        <p>精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。</p>
+<h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote>
+<p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
+<p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p>
+<p>**不保证 $a_0=1$**。</p>
+</blockquote>
+<p>先来一波多项式部分的推导：</p>
+<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。<br>$$<br>G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\<br>G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\<br>2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\<br>G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)<br>$$<br> 然后就可以递归求解了。</p>
+<p>那么现在递归到常数项的时候有一个问题：如何求 $x_0^2\equiv y(\bmod 998244353)$。</p>
+<p>那么就要用到一个新知识：二次剩余。</p>
+<p>这个玩意使用来求解方程：<br>$$<br>x^2\equiv n(\bmod p)<br>$$<br>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
+<ul>
+<li>判定</li>
+</ul>
+<p>判断一个数 $x$ 是不是二次剩余。</p>
+<p>这个东西叫欧拉准则。</p>
+<p>结论：</p>
+<p>$x^{\frac{p-1}{2}}\equiv 1(\bmod p)$ 与 $x$ 是二次剩余等价。</p>
+<p>推论：</p>
+<p>$x^{\frac{p-1}{2}}\equiv -1(\bmod p)$ 与 $x$ 是非二次剩余等价。</p>
+<p>根据费马小定理有 $x^{\frac{p-1}{2}}\equiv 1(\bmod p)\Leftrightarrow x^{2\cdot\frac{p-1}{2}}\equiv 1(\bmod p)\Leftrightarrow g^{k\cdot\frac{p-1}{2}}\equiv1(\bmod p)$ 。</p>
+<p>可得 $k$ 一定为偶数，那么 $g^{\frac{k}{2}}$ 是 $x$ 开根的结果，所以 $x$ 是二次剩余，</p>
+<p>由于$x^{\frac{p-1}{2}}\equiv 1 or-1(\bmod p)$ 。</p>
+<ul>
+<li>求解</li>
+</ul>
+<p>判定完了以后可以开始求解了。</p>
+<p>我们可以先找到一个 $a$ 使得 $a^2-n\equiv 0$ 且 $a^2-n$ 是非二次剩余。</p>
+<p>至于怎么找，因为非二次剩余数量是 $n/2$ 级别的，所以可以随机。</p>
+<p>现在找到一个 $b$ 使得 $b^2 \equiv a^2-n$。</p>
+<p>因为实际上实数域上涨不到这样的 $b$ 所以可以到复数域上找，只不过为了计算方便我们定义 $i^2=a^2-n$。</p>
+<p>那么可以通过计算得出 $(a+i)^{p+1}\equiv n$。</p>
+<p>所以得到 $(a+1)^{\frac{p+1}{2}}$ 是一个解， $-(a+1)^{\frac{p+1}{2}}$ 是另一个解。</p>
+
     </div>
 </article>
+
+
+<div id="comments-template"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script>
+	if(!window.commentConfig) {
+      window.commentConfig = {}
+      window.commentConfig.title = '二次剩余学习笔记'
+    }
+</script>
+
                 </div>
                 <aside class="col-md-4 gal-left" id="sidebar">
     <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
@@ -361,17 +403,17 @@
 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
+                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
+                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
                 </li>
                 
                 
                 <li>
-                    <a href="/archives/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
+                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
                 </li>
                 
             </ul>
@@ -379,17 +421,17 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 14.121848169228365px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 19.892944488751436px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 15.53367308762304px;" class="tag-cloud-link">字符串</a>
+    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14.797576879306233px;" class="tag-cloud-link">字符串</a>
     
-    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 16.608213161334604px;" class="tag-cloud-link">树状数组</a>
+    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 15.496818474146423px;" class="tag-cloud-link">树状数组</a>
     
-    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 19.348402941844032px;" class="tag-cloud-link">排序</a>
+    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 15.990012257549292px;" class="tag-cloud-link">排序</a>
     
-    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 9.219260905340173px;" class="tag-cloud-link">贪心</a>
+    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 18.86560062955176px;" class="tag-cloud-link">贪心</a>
     
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 11.188928553361926px;" class="tag-cloud-link">学习笔记</a>
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.371707271119924px;" class="tag-cloud-link">学习笔记</a>
     
 </div>
                 
@@ -524,6 +566,30 @@
 <script src="/js/blog.js"></script>
 
 
+
+
+<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
+<script>
+    if(window.commentConfig) {
+      window.commentConfig.id = 'Sun Oct 11 2020 21:04:02 GMT+0800'
+      window.commentConfig.owner = 'clamee'
+      window.commentConfig.repo = 'clammod'
+      window.commentConfig.client_id = '3cd96a382b4a95085ef0'
+      window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
+      window.commentConfig.redirect_uri = ''
+    } else {
+      window.commentConfig = {
+      	id: 'Sun Oct 11 2020 21:04:02 GMT+0800',
+        owner: 'clamee',
+        repo: 'clammod',
+        client_id: '3cd96a382b4a95085ef0',
+        client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
+        redirect_uri: ''
+      }
+    }
+</script>
+
+<script src="/js/comment/gitment.js"></script>
 
 
 </html>
