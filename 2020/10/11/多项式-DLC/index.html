@@ -55,7 +55,12 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Clamee's Blog" type="application/atom+xml">
+</head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -231,13 +236,20 @@
 <h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote>
 <p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
 <p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p>
-<p>**不保证 $a_0=1$**。</p>
+<p><strong>不保证 $a_0=1$</strong>。</p>
 </blockquote>
 <p>先来一波多项式部分的推导：</p>
-<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。<br>$$<br>G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\<br>G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\<br>2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\<br>G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)<br>$$<br> 然后就可以递归求解了。</p>
+<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。 </p>
+<script type="math/tex; mode=display">
+G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\\
+G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\\
+2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\\
+G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)</script><p> 然后就可以递归求解了。</p>
 <p>那么现在递归到常数项的时候有一个问题：如何求 $x_0^2\equiv y(\bmod 998244353)$。</p>
 <p>那么就要用到一个新知识：二次剩余。</p>
-<p>这个玩意使用来求解方程：<br>$$<br>x^2\equiv n(\bmod p)<br>$$<br>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
+<p>这个玩意使用来求解方程：</p>
+<script type="math/tex; mode=display">
+x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
 <ul>
 <li>判定</li>
 </ul>
@@ -421,17 +433,17 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 19.892944488751436px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 11.729535954616015px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 14.797576879306233px;" class="tag-cloud-link">字符串</a>
+    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 19.8433661718233px;" class="tag-cloud-link">字符串</a>
     
-    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 15.496818474146423px;" class="tag-cloud-link">树状数组</a>
+    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 18.554137390291416px;" class="tag-cloud-link">树状数组</a>
     
-    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 15.990012257549292px;" class="tag-cloud-link">排序</a>
+    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 8.970856889974865px;" class="tag-cloud-link">排序</a>
     
-    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 18.86560062955176px;" class="tag-cloud-link">贪心</a>
+    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 11.957969887633014px;" class="tag-cloud-link">贪心</a>
     
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 16.371707271119924px;" class="tag-cloud-link">学习笔记</a>
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 19.773465349694256px;" class="tag-cloud-link">学习笔记</a>
     
 </div>
                 
@@ -511,6 +523,21 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
@@ -576,7 +603,7 @@
       window.commentConfig.repo = 'clammod'
       window.commentConfig.client_id = '3cd96a382b4a95085ef0'
       window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
-      window.commentConfig.redirect_uri = ''
+      window.commentConfig.redirect_uri = 'null'
     } else {
       window.commentConfig = {
       	id: 'Sun Oct 11 2020 21:04:02 GMT+0800',
@@ -584,7 +611,7 @@
         repo: 'clammod',
         client_id: '3cd96a382b4a95085ef0',
         client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
-        redirect_uri: ''
+        redirect_uri: 'null'
       }
     }
 </script>

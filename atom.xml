@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Clamee&#39;s Blog</title>
+  
+  
+  <link href="http://example.com/atom.xml" rel="self"/>
+  
+  <link href="http://example.com/"/>
+  <updated>2020-10-11T07:22:44.275Z</updated>
+  <id>http://example.com/</id>
+  
+  <author>
+    <name>Clamee</name>
+    
+  </author>
+  
+  <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【游记】CSP 游记</title>
+    <link href="http://example.com/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/"/>
+    <id>http://example.com/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/</id>
+    <published>2020-12-30T15:59:59.000Z</published>
+    <updated>2020-10-11T07:22:44.275Z</updated>
+    
+    <content type="html"><![CDATA[<p>由于我的 blog 不会自动更新修改时间，为了防止引起恐慌，故 blog 更新时间不会显示原本的更新时间。</p><h4 id="Part-1-S1"><a href="#Part-1-S1" class="headerlink" title="Part 1. S1"></a>Part 1. S1</h4><h5 id="DAY-2-DAY-1"><a href="#DAY-2-DAY-1" class="headerlink" title="DAY -2~DAY -1"></a>DAY -2~DAY -1</h5><p>Ys 让我们考了三场试，全都考得贼差，心态崩了。</p><p>考试的时候笔用完了，考前就去文具店买了几只那种 $1$ 元钱的笔。</p><p>初赛前复习了一下补码反码什么的，然后其它的都没怎么看。</p><h5 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h5><p>上午 7:10 不到就跑到机房来了，等到 7:20 左右 ovor 来说是要到校门口集合。然后又来了几个人说不要。我也不是很懂。</p><p>8:10 去做车。有幸做 春日野悠 先生的旁边。路上问了他一个题，然后被他随手 cut 了。我又被打击到了。途中经过了 SDFZ，Imakf 拍了几张照，和去年一模一样呢。</p><p>到 湖南大学 以后有人找 Imakf，qiuly，踢个人 去签名。今年也见到了 老K ，只不过今年 zzt 比较走运没被 a 而已。</p><p>卷子感觉比去年简单。但我阅读理解第三题还是炸的差不多。最后就蒙了个期望得分。蒙对了香农是我没想到的。</p><p>考试的时候好多考场的钟坏了，这不是那个都市传说吗？相信聪明的你也是可以理解的吧。总之 +1s 就对了。</p><p>考完回来在车上和绿水青山谈笑风生了一波。</p><p>中午在 金拱门 吃的中饭。然后还被 T 神拉去打了会篮球。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;由于我的 blog 不会自动更新修改时间，为了防止引起恐慌，故 blog 更新时间不会显示原本的更新时间。&lt;/p&gt;
+&lt;h4 id=&quot;Part-1-S1&quot;&gt;&lt;a href=&quot;#Part-1-S1&quot; class=&quot;headerlink&quot; title=&quot;Part 1. S1&quot;&gt;&lt;</summary>
+      
+    
+    
+    
+    
+    <category term="Other" scheme="http://example.com/tags/Other/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>二次剩余学习笔记</title>
+    <link href="http://example.com/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/"/>
+    <id>http://example.com/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/</id>
+    <published>2020-10-11T13:04:02.000Z</published>
+    <updated>2020-10-11T14:29:47.869Z</updated>
+    
+    <content type="html"><![CDATA[<p>精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。</p><h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote><p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p><p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p><p><strong>不保证 $a_0=1$</strong>。</p></blockquote><p>先来一波多项式部分的推导：</p><p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。 </p><script type="math/tex; mode=display">G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\\G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\\2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\\G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)</script><p> 然后就可以递归求解了。</p><p>那么现在递归到常数项的时候有一个问题：如何求 $x_0^2\equiv y(\bmod 998244353)$。</p><p>那么就要用到一个新知识：二次剩余。</p><p>这个玩意使用来求解方程：</p><script type="math/tex; mode=display">x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p><ul><li>判定</li></ul><p>判断一个数 $x$ 是不是二次剩余。</p><p>这个东西叫欧拉准则。</p><p>结论：</p><p>$x^{\frac{p-1}{2}}\equiv 1(\bmod p)$ 与 $x$ 是二次剩余等价。</p><p>推论：</p><p>$x^{\frac{p-1}{2}}\equiv -1(\bmod p)$ 与 $x$ 是非二次剩余等价。</p><p>根据费马小定理有 $x^{\frac{p-1}{2}}\equiv 1(\bmod p)\Leftrightarrow x^{2\cdot\frac{p-1}{2}}\equiv 1(\bmod p)\Leftrightarrow g^{k\cdot\frac{p-1}{2}}\equiv1(\bmod p)$ 。</p><p>可得 $k$ 一定为偶数，那么 $g^{\frac{k}{2}}$ 是 $x$ 开根的结果，所以 $x$ 是二次剩余，</p><p>由于$x^{\frac{p-1}{2}}\equiv 1 or-1(\bmod p)$ 。</p><ul><li>求解</li></ul><p>判定完了以后可以开始求解了。</p><p>我们可以先找到一个 $a$ 使得 $a^2-n\equiv 0$ 且 $a^2-n$ 是非二次剩余。</p><p>至于怎么找，因为非二次剩余数量是 $n/2$ 级别的，所以可以随机。</p><p>现在找到一个 $b$ 使得 $b^2 \equiv a^2-n$。</p><p>因为实际上实数域上涨不到这样的 $b$ 所以可以到复数域上找，只不过为了计算方便我们定义 $i^2=a^2-n$。</p><p>那么可以通过计算得出 $(a+i)^{p+1}\equiv n$。</p><p>所以得到 $(a+1)^{\frac{p+1}{2}}$ 是一个解， $-(a+1)^{\frac{p+1}{2}}$ 是另一个解。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。&lt;/p&gt;
+&lt;h6 id=&quot;1-多项式开根-加强版&quot;&gt;&lt;a href=&quot;#1-多项式开根-加强版&quot; class=&quot;headerlink&quot; title=&quot;1.多项式开根(加</summary>
+      
+    
+    
+    
+    
+    <category term="学习笔记" scheme="http://example.com/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>【题解】[HA2009]求回文串</title>
+    <link href="http://example.com/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/"/>
+    <id>http://example.com/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/</id>
+    <published>2020-10-08T03:51:33.000Z</published>
+    <updated>2020-10-08T04:12:23.774Z</updated>
+    
+    <content type="html"><![CDATA[<p>题目大意：</p><blockquote><p>给你一个长度为 $n$ 的字符串，每次可以交换相邻的两个字符，求最小的交换次数使得将字符串变成回文串($n\le 10^6$)。</p></blockquote><p>可以考虑终止状态和起始状态的联系，可以构建序列 b 表示依次给每个字符找到原序列中的对应字符的出现位置，答案即为 b 数组的逆序对数。</p><p>例如：</p><pre><code class="lang-abbca```">```abcba</code></pre><p>构建出来的序列为 <code>1 2 4 3 5</code>，所以答案为 $1$。</p><p>那么我们就将问题转化为求出一个序列使得它对应上去了以后逆序对数最小。</p><p>考虑任意两种字符之间的贡献不难发现，我们可以钦定所有字符的左边不动，只改变右边。于是我们可以构造出一个新的序列。然后求一波逆序对即可。</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define int long long</span><br><span class="line">char s[1000005];</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">if(x&lt;10)return putchar(x+48),void();</span><br><span class="line">return write(x&#x2F;10),putchar(x%10+48),void();</span><br><span class="line">&#125;</span><br><span class="line">int n,t[26],p[1000005],r[26],b[1000005];</span><br><span class="line">int tree[1000005],cnt;</span><br><span class="line">bool vis[1000005];</span><br><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">while(x&lt;&#x3D;n)</span><br><span class="line">&#123;</span><br><span class="line">tree[x]++;</span><br><span class="line">x+&#x3D;x&amp;-x;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)</span><br><span class="line">&#123;</span><br><span class="line">int re&#x3D;0;</span><br><span class="line">while(x)</span><br><span class="line">&#123;</span><br><span class="line">re+&#x3D;tree[x];</span><br><span class="line">x-&#x3D;x&amp;-x;</span><br><span class="line">&#125;</span><br><span class="line">return re;</span><br><span class="line">&#125;</span><br><span class="line">int abs2(int x)</span><br><span class="line">&#123;</span><br><span class="line">return x&gt;0?x:-x;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">scanf(&quot;%s&quot;,s+1);</span><br><span class="line">n&#x3D;strlen(s+1);</span><br><span class="line">for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">&#123;</span><br><span class="line">int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">t[now]++;</span><br><span class="line">p[i]&#x3D;r[now];</span><br><span class="line">r[now]&#x3D;i;</span><br><span class="line">&#125;</span><br><span class="line">for(rg int i&#x3D;0;i&lt;26;i++)</span><br><span class="line">&#123;</span><br><span class="line">if(t[i]&amp;1)</span><br><span class="line">&#123;</span><br><span class="line">if(cnt)</span><br><span class="line">&#123;</span><br><span class="line">puts(&quot;-1&quot;);return 0;</span><br><span class="line">&#125;</span><br><span class="line">cnt&#x3D;i;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">if(cnt)</span><br><span class="line">&#123;</span><br><span class="line">int now&#x3D;r[cnt],las&#x3D;0;</span><br><span class="line">for(int i&#x3D;1;i&lt;&#x3D;t[cnt]&#x2F;2;i++)</span><br><span class="line">&#123;</span><br><span class="line">now&#x3D;p[now];</span><br><span class="line">&#125;</span><br><span class="line">if(las)</span><br><span class="line">p[las]&#x3D;p[now];</span><br><span class="line">b[n&#x2F;2+1]&#x3D;now;</span><br><span class="line">vis[now]&#x3D;1;</span><br><span class="line">&#125;</span><br><span class="line">int ans&#x3D;0,ss&#x3D;0;</span><br><span class="line">for(rg int i&#x3D;1;i&lt;&#x3D;n&#x2F;2+ss;i++)</span><br><span class="line">&#123;</span><br><span class="line">if(vis[i])&#123;ss++;continue;&#125;</span><br><span class="line">int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">vis[i]&#x3D;vis[r[now]]&#x3D;1;</span><br><span class="line">b[i-ss]&#x3D;i;b[n-i+ss+1]&#x3D;r[now];</span><br><span class="line">r[now]&#x3D;p[r[now]];</span><br><span class="line">&#125;</span><br><span class="line">for(int i&#x3D;n;i&gt;&#x3D;1;i--)</span><br><span class="line">&#123;</span><br><span class="line">ans+&#x3D;sum(b[i]);</span><br><span class="line">add(b[i]);</span><br><span class="line">&#125;</span><br><span class="line">write(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;题目大意：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;给你一个长度为 $n$ 的字符串，每次可以交换相邻的两个字符，求最小的交换次数使得将字符串变成回文串($n\le 10^6$)。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;可以考虑终止状态和起始状态的联系，可以构建序列 b</summary>
+      
+    
+    
+    
+    
+    <category term="字符串" scheme="http://example.com/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
+    
+    <category term="树状数组" scheme="http://example.com/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+    
+    <category term="排序" scheme="http://example.com/tags/%E6%8E%92%E5%BA%8F/"/>
+    
+    <category term="贪心" scheme="http://example.com/tags/%E8%B4%AA%E5%BF%83/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Welcome to clamee&#39;s new blog!</title>
+    <link href="http://example.com/1926/08/17/Welcome-to-clamee-s-new-blog/"/>
+    <id>http://example.com/1926/08/17/Welcome-to-clamee-s-new-blog/</id>
+    <published>1926-08-17T03:45:14.000Z</published>
+    <updated>2020-10-08T03:30:20.917Z</updated>
+    
+    <content type="html"><![CDATA[<p>致 daisiki の米娜桑，</p><p>马上就要吃午饭了呢,在这个特殊的日子里。</p><p>能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。</p><p>大约两年前我在 luogu 开通了我的第一个博客，之后也会基本搬运过来。但这不意味着在 luogu 上停更，以后在 luogu 博客上我还是会发布一些题解。以后大部分的题解，以及所有的其他内容都会在这里发表。至于要不要同步当然是看皮(wo)卡(zi)丘(ji)的的心情啦，毕竟皮卡丘的意愿也是很重要的呢。</p><p>在搭建博客的过程中 T 神给了我极大的帮助，在这里非常感谢。顺便一提，T 神是个很可爱的妹子呢(<del>虽然说可爱的一直都只有男孩子而已呢</del>)。</p><p>今天感觉是个很重要的日子呢，感觉会有大事发生，会有什么有名的长者之类的人物诞生吗，我也不知道，但是相信屏幕前的你也是可以明白的吧。啊，要到饭点了呢，大家都赶紧去吃饭吧。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;致 daisiki の米娜桑，&lt;/p&gt;
+&lt;p&gt;马上就要吃午饭了呢,在这个特殊的日子里。&lt;/p&gt;
+&lt;p&gt;能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。&lt;/p&gt;
+&lt;p&gt;大约两年前我在 luogu 开通了我的第一</summary>
+      
+    
+    
+    
+    
+    <category term="Other" scheme="http://example.com/tags/Other/"/>
+    
+  </entry>
+  
+</feed>

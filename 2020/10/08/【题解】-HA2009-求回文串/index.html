@@ -55,7 +55,12 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Clamee's Blog" type="application/atom+xml">
+</head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -245,13 +250,13 @@
 </blockquote>
 <p>可以考虑终止状态和起始状态的联系，可以构建序列 b 表示依次给每个字符找到原序列中的对应字符的出现位置，答案即为 b 数组的逆序对数。</p>
 <p>例如：</p>
-<p><code>abbca</code></p>
-<p><code>abcba</code></p>
+<pre><code class="lang-abbca```">
+```abcba
+</code></pre>
 <p>构建出来的序列为 <code>1 2 4 3 5</code>，所以答案为 $1$。</p>
 <p>那么我们就将问题转化为求出一个序列使得它对应上去了以后逆序对数最小。</p>
 <p>考虑任意两种字符之间的贡献不难发现，我们可以钦定所有字符的左边不动，只改变右边。于是我们可以构造出一个新的序列。然后求一波逆序对即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define int long long</span><br><span class="line">char s[1000005];</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;10)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),putchar(x%10+48),void();</span><br><span class="line">&#125;</span><br><span class="line">int n,t[26],p[1000005],r[26],b[1000005];</span><br><span class="line">int tree[1000005],cnt;</span><br><span class="line">bool vis[1000005];</span><br><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">	while(x&lt;&#x3D;n)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[x]++;</span><br><span class="line">		x+&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0;</span><br><span class="line">	while(x)</span><br><span class="line">	&#123;</span><br><span class="line">		re+&#x3D;tree[x];</span><br><span class="line">		x-&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">	return re;</span><br><span class="line">&#125;</span><br><span class="line">int abs2(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return x&gt;0?x:-x;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%s&quot;,s+1);</span><br><span class="line">	n&#x3D;strlen(s+1);</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		t[now]++;</span><br><span class="line">		p[i]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;i;</span><br><span class="line">	&#125;</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;26;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(t[i]&amp;1)</span><br><span class="line">		&#123;</span><br><span class="line">			if(cnt)</span><br><span class="line">			&#123;</span><br><span class="line">				puts(&quot;-1&quot;);return 0;</span><br><span class="line">			&#125;</span><br><span class="line">			cnt&#x3D;i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(cnt)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;r[cnt],las&#x3D;0;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;t[cnt]&#x2F;2;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			now&#x3D;p[now];</span><br><span class="line">		&#125;</span><br><span class="line">		if(las)</span><br><span class="line">			p[las]&#x3D;p[now];</span><br><span class="line">		b[n&#x2F;2+1]&#x3D;now;</span><br><span class="line">		vis[now]&#x3D;1;</span><br><span class="line">	&#125;</span><br><span class="line">	int ans&#x3D;0,ss&#x3D;0;</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n&#x2F;2+ss;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(vis[i])&#123;ss++;continue;&#125;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		vis[i]&#x3D;vis[r[now]]&#x3D;1;</span><br><span class="line">		b[i-ss]&#x3D;i;b[n-i+ss+1]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;p[r[now]];</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i&#x3D;n;i&gt;&#x3D;1;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+&#x3D;sum(b[i]);</span><br><span class="line">		add(b[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	write(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
 
     </div>
 </article>
@@ -413,17 +418,17 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 16.719618147822224px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 18.90920177018227px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 11.116229734954793px;" class="tag-cloud-link">字符串</a>
+    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 17.39621860131696px;" class="tag-cloud-link">字符串</a>
     
-    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 14.825134743118861px;" class="tag-cloud-link">树状数组</a>
+    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 10.199319356293508px;" class="tag-cloud-link">树状数组</a>
     
-    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 15.033175073479958px;" class="tag-cloud-link">排序</a>
+    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 11.280739462788258px;" class="tag-cloud-link">排序</a>
     
-    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 8.500912198250841px;" class="tag-cloud-link">贪心</a>
+    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 12.297716777877673px;" class="tag-cloud-link">贪心</a>
     
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 13.222376829739567px;" class="tag-cloud-link">学习笔记</a>
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15.271679246632916px;" class="tag-cloud-link">学习笔记</a>
     
 </div>
                 
@@ -503,6 +508,21 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
@@ -568,7 +588,7 @@
       window.commentConfig.repo = 'clammod'
       window.commentConfig.client_id = '3cd96a382b4a95085ef0'
       window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
-      window.commentConfig.redirect_uri = ''
+      window.commentConfig.redirect_uri = 'null'
     } else {
       window.commentConfig = {
       	id: 'Thu Oct 08 2020 11:51:33 GMT+0800',
@@ -576,7 +596,7 @@
         repo: 'clammod',
         client_id: '3cd96a382b4a95085ef0',
         client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
-        redirect_uri: ''
+        redirect_uri: 'null'
       }
     }
 </script>

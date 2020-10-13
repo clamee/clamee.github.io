@@ -55,7 +55,12 @@
         }
       }
     </script>-->
-<meta name="generator" content="Hexo 5.2.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Clamee's Blog" type="application/atom+xml">
+</head>
 <body>
     <!-- 背景轮播图功能 -->
     <section class="hidden-xs">
@@ -399,17 +404,17 @@
                 
                 <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
     
-    <a href="/tags/Other/" style="font-size: 10.460490754672085px;" class="tag-cloud-link">Other</a>
+    <a href="/tags/Other/" style="font-size: 15.125501048733632px;" class="tag-cloud-link">Other</a>
     
-    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 9.56201300615796px;" class="tag-cloud-link">字符串</a>
+    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 13.227188491850105px;" class="tag-cloud-link">字符串</a>
     
-    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 19.77116423613601px;" class="tag-cloud-link">树状数组</a>
+    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 15.106817859794397px;" class="tag-cloud-link">树状数组</a>
     
-    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 14.53457257297433px;" class="tag-cloud-link">排序</a>
+    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 8.526504601049915px;" class="tag-cloud-link">排序</a>
     
-    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 18.554864113605262px;" class="tag-cloud-link">贪心</a>
+    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 16.412700314044134px;" class="tag-cloud-link">贪心</a>
     
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15.972951982034896px;" class="tag-cloud-link">学习笔记</a>
+    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 15.516945874134219px;" class="tag-cloud-link">学习笔记</a>
     
 </div>
                 
@@ -489,6 +494,21 @@
 <div id="gal-gotop">
     <i class="fa fa-angle-up"></i>
 </div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
 <script src="/js/activate-power-mode.js"></script>
@@ -554,7 +574,7 @@
       window.commentConfig.repo = 'clammod'
       window.commentConfig.client_id = '3cd96a382b4a95085ef0'
       window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
-      window.commentConfig.redirect_uri = ''
+      window.commentConfig.redirect_uri = 'null'
     } else {
       window.commentConfig = {
       	id: 'Wed Dec 30 2020 23:59:59 GMT+0800',
@@ -562,7 +582,7 @@
         repo: 'clammod',
         client_id: '3cd96a382b4a95085ef0',
         client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
-        redirect_uri: ''
+        redirect_uri: 'null'
       }
     }
 </script>
