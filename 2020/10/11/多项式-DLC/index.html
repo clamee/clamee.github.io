@@ -1,255 +1,84 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="zh-HK" class="loading">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="author" content="Clamee">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>二次剩余学习笔记 - Clamee&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。
+1.多项式开根(加强版)
+给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\,"> 
+    <meta name="author" content="Clamee"> 
+    <link rel="alternative" href="atom.xml" title="Clamee&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
     
     
-    
-    
-    
-    
-    <title>二次剩余学习笔记 | Clamee&#39;s Blog</title>
-    <link href="http://example.com" rel="prefetch" />
+<link rel="stylesheet" href="/css/diaspora.css">
 
-    
-<link rel="stylesheet" href="/css/bootstrap.min.css">
-<link rel="stylesheet" href="/css/aos.css">
-<link rel="stylesheet" href="/css/style.css">
-
-    
-<script src="/js/jquery.min.js"></script>
-
-    
-<script src="/js/bootstrap.min.js"></script>
-
-    
-<script src="/js/aos.js"></script>
-
-    
-<script src="/js/highslide/highslide-full.min.js"></script>
-
-    
-<link rel="stylesheet" href="/js/highslide/highslide.css">
-
-    <style type="text/css">
-        @media (max-width: 768px) {
-            body {
-                background-color: #f0f0f0;
-                background: url('/imgs/xsbg.gif');
-                background-attachment: fixed;
-            }
-        }
-    </style>
-    
-    <!--<script type="text/javascript">
-      if (document.images) {
-        var avatar = new Image();
-        avatar.src = '/imgs/pikachu.png'
-        var previews = 'preview1.jpg,preview2.jpg,preview3.jpg,preview4.jpg'.split(',')
-        var previewsPreLoad = []
-        for(var i = 0; i < length; i++) {
-          previewsPreLoad.push(new Image())
-          previewsPreLoad[previewsPreLoad.length - 1].src = '/imgs/preview' + previews[i]
-        }
-      }
-    </script>-->
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
 <!-- hexo injector head_end start -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"><link rel="alternate" href="/atom.xml" title="Clamee's Blog" type="application/atom+xml">
-</head>
-<body>
-    <!-- 背景轮播图功能 -->
-    <section class="hidden-xs">
-    <ul class="cb-slideshow">
-        <li><span>天若</span></li>
-        <li><span>有情</span></li>
-        <li><span>天亦老</span></li>
-        <li><span>我为</span></li>
-        <li><span>长者</span></li>
-        <li><span>续一秒</span></li>
-    </ul>
-</section>
-    <!-- 欧尼酱功能, 谁用谁知道 -->
-    
-    <header class="navbar navbar-inverse" id="gal-header">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed"
-                    data-toggle="collapse" data-target=".bs-navbar-collapse"
-                    aria-expanded="false">
-                <span class="fa fa-lg fa-reorder"></span>
-            </button>
-            <a href="http://example.com">
-                
-                <style>
-                    #gal-header .navbar-brand {
-                        height: 54px;
-                        line-height: 24px;
-                        font-size: 28px;
-                        opacity: 1;
-                        background-color: rgba(0,0,0,0);
-                        text-shadow: 0 0 5px #fff,0 0 10px #fff,0 0 15px #fff,0 0 20px #228DFF,0 0 35px #228DFF,0 0 40px #228DFF,0 0 50px #228DFF,0 0 75px #228DFF;
-                    }
-                </style>
-                <!-- 这里使用文字(navbar_text or config.title) -->
-                <div class="navbar-brand">Clamee&#39;s Blog</div>
-                
-            </a>
-        </div>
-        <div class="collapse navbar-collapse bs-navbar-collapse">
-            <ul class="nav navbar-nav" id="menu-gal">
-                
-                
-                <li class="">
-                    <a href="/">
-                        <i class="fa fa-home"></i>首页
-                    </a>
-                </li>
-                
-                
-                
-                <li class="">
-                    <a href="/archives">
-                        <i class="fa fa-archive"></i>归档
-                    </a>
-                </li>
-                
-                
-                
-                
-                <li class="">
-                    <a href="/categories">
-                        <i class="fa fa-list"></i>分类
-                    </a>
-                </li>
-                
-                
-                
-                
-                
-                <li class="dropdown">
-                    <!-- TODO 添加hover dropdown效果 -->
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                       aria-haspopup="true" aria-expanded="false" data-hover="dropdown">
-                        <i class="fa fa-tags"></i>标签
-                    </a>
-                    <ul class="dropdown-menu">
-                        
-                        
-                        <li>
-                            <a href="/tags/Other/">Other</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                        </li>
-                        
-                        <li>
-                            <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/">字符串</a>
-                        </li>
-                        
-                        
-                        <li>
-                            <a href="/tags">...</a>
-                        </li>
-                        
-                        
-                    </ul>
-                </li>
-                
-                
-                
-                
-                <li class="">
-                    <a href="/about">
-                        <i class="fa fa-user"></i>关于我
-                    </a>
-                </li>
-                
-                
-            </ul>
-        </div>
-    </div>
-</header>
-    <div id="gal-body">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8 gal-right" id="mainstay">
-                    
-<article class="article well article-body" id="article">
-    <div class="breadcrumb">
-        <i class="fa fa-home"></i>
-        <a href="http://example.com">Clamee&#39;s Blog</a>
-        >
-        <span>二次剩余学习笔记</span>
-    </div>
-    <!-- 大型设备详细文章 -->
-    <div class="hidden-xs">
-        <div class="title-article">
-            <h1>
-                <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
-            </h1>
-        </div>
-        <div class="tag-article">
-            
-            <span class="label label-gal">
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                
-            </span>
-            
-            <span class="label label-gal">
-                <i class="fa fa-calendar"></i> 2020-10-11
-            </span>
-            
-        </div>
-    </div>
-    <!-- 小型设备详细文章 -->
-    <div class="visible-xs">
-        <center>
-            <div class="title-article">
-                <h4>
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
-                </h4>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Clamee&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">二次剩余学习笔记</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
             </div>
-            <p>
-                <i class="fa fa-calendar"></i> 2020-10-11
-            </p>
-            <p>
-                
-                <i class="fa fa-tags"></i>
-                
-                <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">学习笔记</a>
-                
-                
-                
-            </p>
-        </center>
+            <div id="qr"></div>
+        </div>
     </div>
-    <div class="content-article">
-        <p>精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。</p>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">二次剩余学习笔记</h1>
+        <div class="stuff">
+            <span>十月 11, 2020</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="tag">学习笔记</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。</p>
 <h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote>
 <p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
 <p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p>
-<p><strong>不保证 $a_0=1$</strong>。</p>
+<p>**不保证 $a_0=1$**。</p>
 </blockquote>
 <p>先来一波多项式部分的推导：</p>
-<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。 </p>
-<script type="math/tex; mode=display">
-G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\\
-G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\\
-2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\\
-G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)</script><p> 然后就可以递归求解了。</p>
+<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。<br>$$<br>G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\<br>G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\<br>2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\<br>G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)<br>$$<br> 然后就可以递归求解了。</p>
 <p>那么现在递归到常数项的时候有一个问题：如何求 $x_0^2\equiv y(\bmod 998244353)$。</p>
 <p>那么就要用到一个新知识：二次剩余。</p>
-<p>这个玩意使用来求解方程：</p>
-<script type="math/tex; mode=display">
-x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
+<p>这个玩意使用来求解方程：<br>$$<br>x^2\equiv n(\bmod p)<br>$$<br>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
 <ul>
 <li>判定</li>
 </ul>
@@ -273,255 +102,59 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
 <p>那么可以通过计算得出 $(a+i)^{p+1}\equiv n$。</p>
 <p>所以得到 $(a+1)^{\frac{p+1}{2}}$ 是一个解， $-(a+1)^{\frac{p+1}{2}}$ 是另一个解。</p>
 
-    </div>
-</article>
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='http://m10.music.126.net/20201014204250/39ea76848d7c7fc9fbd56063a9aa5051/ymusic/070b/1a0a/81f2/faaf99e8858ed9cc0b7171f33a57be5a.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='http://m10.music.126.net/20201014204417/3b3a5a05019bb61ef28bc99a29d2c4e0/ymusic/83d6/62df/7f3c/8903d031ce8444aedb3c73bc69ceeef9.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='http://m10.music.126.net/20201014204506/acb8e2ead8fa093c24c49316c133ff4b/ymusic/40b2/57b7/59d8/18a9537f8e0ab34b299b1ccd2b5eded3.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='http://m10.music.126.net/20201014204548/2ea62844f2e452e2c90b50f7ef151e42/ymusic/ee1d/6f23/38b4/fa1696b20c269459da65174ec0fd5421.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='http://m10.music.126.net/20201014204617/ea836704555100bca799726b8e7a4475/ymusic/6f45/03f3/b6db/9ad133c59b5dbe1ffd6445b3db088c06.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='false'
+        data-ae='false'
+        data-ci='3cd96a382b4a95085ef0'
+        data-cs='74410027e750b75f8274dd4f97997bd4c84c2e37'
+        data-r='clammod'
+        data-o='clamee'
+        data-a='clamee'
+        data-d='true'
+    >查看评论</div>
 
 
-<div id="comments-template"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script>
-	if(!window.commentConfig) {
-      window.commentConfig = {}
-      window.commentConfig.title = '二次剩余学习笔记'
-    }
-</script>
-
-                </div>
-                <aside class="col-md-4 gal-left" id="sidebar">
-    <!-- 此为sidebar的搜索框, 非搜索结果页面 -->
-<aside id="sidebar-search">
-    <div class="search hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <form class="form-inline clearfix" id="search-form" method="get"
-              action="/search/index.html">
-            <input type="text" name="s" class="form-control" id="searchInput" placeholder="搜索文章~" autocomplete="off">
-            <button class="btn btn-danger btn-gal" type="submit">
-                <i class="fa fa-search"></i>
-            </button>
-        </form>
     </div>
-</aside>
-    <aside id="sidebar-author">
-    <div class="panel panel-gal" data-aos="flip-right" data-aos-duration="3000">
-        <div class="panel-heading" style="text-align: center">
-            <i class="fa fa-quote-left"></i>
-            Clamee
-            <i class="fa fa-quote-right"></i>
+    
+        <div class='side'>
+			<ol class="toc"><li class="toc-item toc-level-6"><a class="toc-link" href="#1-%E5%A4%9A%E9%A1%B9%E5%BC%8F%E5%BC%80%E6%A0%B9-%E5%8A%A0%E5%BC%BA%E7%89%88"><span class="toc-number">1.</span> <span class="toc-text">1.多项式开根(加强版)</span></a></li></ol>	
         </div>
-        <div class="author-panel text-center">
-            <img src="/imgs/pikachu.png" width="140" height="140"
-                 alt="个人头像" class="author-image">
-            <p class="author-description"></p>
-        </div>
-    </div>
-</aside>
-    
-    <aside id="sidebar-recent_comments">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-comments"></i>
-            最新评论
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush"></ul>
-    </div>
-</aside>
-    
-    <!-- 要配置好leancloud才能开启此小工具 -->
-    
-    
-    <aside id="sidebar-recent_posts">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-refresh"></i>
-            近期文章
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush">
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/">【游记】CSP 游记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/">【题解】[HA2009]求回文串</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
-                </span>
-            </li>
-            
-        </ul>
-    </div>
-</aside>
-    
-    
-    <aside id="sidebar-rand_posts">
-    <div class="panel panel-gal recent hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-        <div class="panel-heading">
-            <i class="fa fa-refresh"></i>
-            随机文章
-            <i class="fa fa-times-circle panel-remove"></i>
-            <i class="fa fa-chevron-circle-up panel-toggle"></i>
-        </div>
-        <ul class="list-group list-group-flush">
-            
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/">【游记】CSP 游记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/1926/08/17/Welcome-to-clamee-s-new-blog/">Welcome to clamee&#39;s new blog!</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/">二次剩余学习笔记</a>
-                </span>
-            </li>
-            
-            <li class="list-group-item">
-                <span class="post-title">
-                    <a href="/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/">【题解】[HA2009]求回文串</a>
-                </span>
-            </li>
-            
-        </ul>
-    </div>
-</aside>
-    
-    
-    <aside id="gal-sets">
-        <div class="panel panel-gal hidden-xs" data-aos="fade-up" data-aos-duration="2000">
-            <ul class="nav nav-pills pills-gal">
-
-                
-                <li>
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-tags" data-toggle="tab" id="tags-tab">热门标签</a>
-                </li>
-                
-                
-                <li>
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-friend-links" data-toggle="tab" id="friend-links-tab">友情链接</a>
-                </li>
-                
-                
-                <li>
-                    <a href="/2020/10/11/%E5%A4%9A%E9%A1%B9%E5%BC%8F-DLC/index.html#sidebar-links" data-toggle="tab" id="links-tab">个人链接</a>
-                </li>
-                
-            </ul>
-            <div class="tab-content">
-                
-                <div class="cloud-tags tab-pane nav bs-sidenav fade" id="sidebar-tags">
-    
-    <a href="/tags/Other/" style="font-size: 10.687394787607545px;" class="tag-cloud-link">Other</a>
-    
-    <a href="/tags/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" style="font-size: 19.058452610364178px;" class="tag-cloud-link">学习笔记</a>
-    
-    <a href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" style="font-size: 17.97677073367132px;" class="tag-cloud-link">字符串</a>
-    
-    <a href="/tags/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/" style="font-size: 11.934948423428839px;" class="tag-cloud-link">树状数组</a>
-    
-    <a href="/tags/%E6%8E%92%E5%BA%8F/" style="font-size: 9.94490413875873px;" class="tag-cloud-link">排序</a>
-    
-    <a href="/tags/%E8%B4%AA%E5%BF%83/" style="font-size: 18.161981645256105px;" class="tag-cloud-link">贪心</a>
     
 </div>
-                
-                
-                <div class="friend-links tab-pane nav bs-sidenav fade" id="sidebar-friend-links">
-    
-    <li>
-        <a href="https://daniel-yuan.github.io" target="_blank">Daniel_yuan</a>
-    </li>
-    
-    <li>
-        <a href="https://www.cnblogs.com/imakf" target="_blank">Imakf</a>
-    </li>
-    
-    <li>
-        <a href="https://www.cnblogs.com/lsq147" target="_blank">LSQS</a>
-    </li>
-    
-    <li>
-        <a href="https://www.cnblogs.com/lightmain-blog/p" target="_blank">lightmain</a>
-    </li>
-    
-    <li>
-        <a href="https://www.cnblogs.com/ztz-cpp" target="_blank">zzt</a>
-    </li>
-    
-    <li>
-        <a href="https://pokemonshowdown.com" target="_blank">pokemonshowdown</a>
-    </li>
-    
-    <li>
-        <a href="http://generals.io" target="_blank">generals</a>
-    </li>
-    
-</div>
-                
-                
-                <div class="links tab-pane nav bs-sidenav fade" id="sidebar-links">
-    
-    <li>
-        <a href="https://github.com/clamee" target="_blank">Github</a>
-    </li>
-    
-    <li>
-        <a href="" target="_blank">Coding</a>
-    </li>
-    
-    <li>
-        <a href="https://www.zhihu.com/people/ixizixi" target="_blank">知乎</a>
-    </li>
-    
-    <li>
-        <a href="https://codeforces.com/profile/lzx_zrl" target="_blank">Codeforces</a>
-    </li>
-    
-    <li>
-        <a href="https://www.luogu.com.cn/user/55201" target="_blank">luogu</a>
-    </li>
-    
-</div>
-                
-            </div>
-        </div>
-    </aside>
-    
-</aside>
-            </div>
-        </div>
-    </div>
-    <footer id="gal-footer">
-    <div class="container">
-        Copyright © 2018 Clamee Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>.&nbsp;Theme by <a href="https://github.com/ZEROKISEKI" target="_blank">AONOSORA</a>
-    </div>
-</footer>
 
-<!-- 回到顶端 -->
-<div id="gal-gotop">
-    <i class="fa fa-angle-up"></i>
+
+    </div>
 </div>
 <script type="text/x-mathjax-config">
     MathJax.Hub.Config({
@@ -540,83 +173,72 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
 <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 
-<script src="/js/activate-power-mode.js"></script>
 
-<script>
-
-    // 配置highslide
-	hs.graphicsDir = '/js/highslide/graphics/'
-    hs.outlineType = "rounded-white";
-    hs.dimmingOpacity = 0.8;
-    hs.outlineWhileAnimating = true;
-    hs.showCredits = false;
-    hs.captionEval = "this.thumb.alt";
-    hs.numberPosition = "caption";
-    hs.align = "center";
-    hs.transitions = ["expand", "crossfade"];
-    hs.lang.number = '共%2张图, 当前是第%1张';
-    hs.addSlideshow({
-      interval: 5000,
-      repeat: true,
-      useControls: true,
-      fixedControls: "fit",
-      overlayOptions: {
-        opacity: 0.75,
-        position: "bottom center",
-        hideOnMouseOut: true
-      }
-    })
-
-    // 初始化aos
-    AOS.init({
-      duration: 1000,
-      delay: 0,
-      easing: 'ease-out-back'
-    });
-
-</script>
-<script>
-	POWERMODE.colorful = 'true';    // make power mode colorful
-	POWERMODE.shake = 'true';       // turn off shake
-	// TODO 这里根据具体情况修改
-	document.body.addEventListener('input', POWERMODE);
-</script>
-<script>
-    window.slideConfig = {
-      prefix: '/imgs/slide/background',
-      ext: 'jpg',
-      maxCount: '6'
-    }
-</script>
-
-<script src="/js/hs.js"></script>
-<script src="/js/blog.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
 
 
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
 
 
-<script src="https://myau.moe/js/comment/gitment.browser.js"></script>
-<script>
-    if(window.commentConfig) {
-      window.commentConfig.id = 'Sun Oct 11 2020 21:04:02 GMT+0800'
-      window.commentConfig.owner = 'clamee'
-      window.commentConfig.repo = 'clammod'
-      window.commentConfig.client_id = '3cd96a382b4a95085ef0'
-      window.commentConfig.client_secret = '74410027e750b75f8274dd4f97997bd4c84c2e37'
-      window.commentConfig.redirect_uri = 'null'
-    } else {
-      window.commentConfig = {
-      	id: 'Sun Oct 11 2020 21:04:02 GMT+0800',
-        owner: 'clamee',
-        repo: 'clammod',
-        client_id: '3cd96a382b4a95085ef0',
-        client_secret: '74410027e750b75f8274dd4f97997bd4c84c2e37',
-        redirect_uri: 'null'
-      }
-    }
-</script>
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
 
-<script src="/js/comment/gitment.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 
 
 </html>
