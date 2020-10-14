@@ -9,13 +9,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="google" content="notranslate" />
-    <meta name="keywords" content="Fechin,"> 
+    <meta name="keywords" content="Clamee,"> 
     <meta name="description" content="精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。
 1.多项式开根(加强版)
 给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\,"> 
     <meta name="author" content="Clamee"> 
     <link rel="alternative" href="atom.xml" title="Clamee&#39;s Blog" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="icon" href="/img/clam2.png"> 
     
 <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
 
@@ -74,13 +74,20 @@
 <h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote>
 <p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
 <p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p>
-<p>**不保证 $a_0=1$**。</p>
+<p><strong>不保证 $a_0=1$</strong>。</p>
 </blockquote>
 <p>先来一波多项式部分的推导：</p>
-<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。<br>$$<br>G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\<br>G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\<br>2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\<br>G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)<br>$$<br> 然后就可以递归求解了。</p>
+<p>不妨假设我们求出了 $H^2(x)\equiv A(x)$，现在要求 $G^2(x)\equiv A(x)$。 </p>
+<script type="math/tex; mode=display">
+G(x)-H(x)\equiv 0(\bmod x^(\frac{n}{2})\\
+G^2(x)+H^2(x)-2G(x)H(x)\equiv 0(\bmod x^n)\\
+2G(x)H(x)\equiv G^2(x)+H^2(x)(\bmod x^n)\\
+G(x)\equiv \frac{F(x)+H^2(x)}{2H(x)}(\bmod x^n)</script><p> 然后就可以递归求解了。</p>
 <p>那么现在递归到常数项的时候有一个问题：如何求 $x_0^2\equiv y(\bmod 998244353)$。</p>
 <p>那么就要用到一个新知识：二次剩余。</p>
-<p>这个玩意使用来求解方程：<br>$$<br>x^2\equiv n(\bmod p)<br>$$<br>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
+<p>这个玩意使用来求解方程：</p>
+<script type="math/tex; mode=display">
+x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在这里设 $p$ 的原根为 $g$。</p>
 <ul>
 <li>判定</li>
 </ul>
