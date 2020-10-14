@@ -32,11 +32,7 @@
     <script async custom-element="amp-auto-ads"
         src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
     </script>
-<!-- hexo injector head_end start -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
-
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.2.0"></head>
+<meta name="generator" content="Hexo 5.2.0"></head>
 
 <body class="loading">
     <span id="config-title" style="display:none">Clamee&#39;s Blog</span>
@@ -72,8 +68,8 @@
         <div class="content markdown">
             <p>精通多项式的大家一定见过以下一个问题(如果你实在要说不精通的话就去看 Imakf 的博客，看完就精通了)。</p>
 <h6 id="1-多项式开根-加强版"><a href="#1-多项式开根-加强版" class="headerlink" title="1.多项式开根(加强版)"></a>1.多项式开根(加强版)</h6><blockquote>
-<p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod\ {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
-<p>多项式的系数在 $\bmod\ 998244353$ 的意义下进行运算。</p>
+<p>给定一个 $n-1$ 次多项式 $A(x)$ ，求一个在  $\bmod {x^n}$ 意义下的多项式 $B(x)$ ，使得 $B^2(x)\equiv A(x)\pmod {x^n}$ ，答案取常数项更小的的 $\sqrt{A(x)}$。</p>
+<p>多项式的系数在 $\bmod 998244353$ 的意义下进行运算。</p>
 <p><strong>不保证 $a_0=1$</strong>。</p>
 </blockquote>
 <p>先来一波多项式部分的推导：</p>
@@ -191,7 +187,9 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
             all[i].SourceElement().parentNode.className += ' has-jax';
     });
 </script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>!-->
+
 </body>
 
 <script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
