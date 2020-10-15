@@ -74,9 +74,7 @@
 </blockquote>
 <p>可以考虑终止状态和起始状态的联系，可以构建序列 b 表示依次给每个字符找到原序列中的对应字符的出现位置，答案即为 b 数组的逆序对数。</p>
 <p>例如：</p>
-<pre><code class="lang-abbca```">
-```abcba
-</code></pre>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">abbca</span><br><span class="line">abcba</span><br></pre></td></tr></table></figure>
 <p>构建出来的序列为 <code>1 2 4 3 5</code>，所以答案为 $1$。</p>
 <p>那么我们就将问题转化为求出一个序列使得它对应上去了以后逆序对数最小。</p>
 <p>考虑任意两种字符之间的贡献不难发现，我们可以钦定所有字符的左边不动，只改变右边。于是我们可以构造出一个新的序列。然后求一波逆序对即可。</p>
