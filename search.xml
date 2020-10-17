@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>【游记】CSP 游记</title>
+    <url>/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/</url>
+    <content><![CDATA[<p>由于我的 blog 不会自动更新修改时间，为了防止引起恐慌，故 blog 更新时间不会显示原本的更新时间。</p>
+<h4 id="Part-1-S1"><a href="#Part-1-S1" class="headerlink" title="Part 1. S1"></a>Part 1. S1</h4><h5 id="DAY-2-DAY-1"><a href="#DAY-2-DAY-1" class="headerlink" title="DAY -2~DAY -1"></a>DAY -2~DAY -1</h5><p>Ys 让我们考了三场试，全都考得贼差，心态崩了。</p>
+<p>考试的时候笔用完了，考前就去文具店买了几只那种 $1$ 元钱的笔。</p>
+<p>初赛前复习了一下补码反码什么的，然后其它的都没怎么看。</p>
+<h5 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h5><p>上午 7:10 不到就跑到机房来了，等到 7:20 左右 ovor 来说是要到校门口集合。然后又来了几个人说不要。我也不是很懂。</p>
+<p>8:10 去做车。有幸做 春日野悠 先生的旁边。路上问了他一个题，然后被他随手 cut 了。我又被打击到了。途中经过了 SDFZ，Imakf 拍了几张照，和去年一模一样呢。</p>
+<p>到 湖南大学 以后有人找 Imakf，qiuly，踢个人 去签名。今年也见到了 老K ，只不过今年 zzt 比较走运没被 a 而已。</p>
+<p>卷子感觉比去年简单。但我阅读理解第三题还是炸的差不多。最后就蒙了个期望得分。蒙对了香农是我没想到的。</p>
+<p>考试的时候好多考场的钟坏了，这不是那个都市传说吗？相信聪明的你也是可以理解的吧。总之 +1s 就对了。</p>
+<p>考完回来在车上和绿水青山谈笑风生了一波。</p>
+<p>中午在 金拱门 吃的中饭。然后还被 T 神拉去打了会篮球。</p>
+]]></content>
+      <tags>
+        <tag>Other</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Welcome to clamee&#39;s new blog!</title>
     <url>/1926/08/17/Welcome-to-clamee-s-new-blog/</url>
     <content><![CDATA[<p>致 daisiki の米娜桑，</p>
@@ -12,6 +31,26 @@
 ]]></content>
       <tags>
         <tag>Other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【题解】[FJOI2016]神秘数</title>
+    <url>/2020/10/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-FJOI2016-%E7%A5%9E%E7%A7%98%E6%95%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>题目大意：一个可重复数字集合S的神秘数定义为最小的不能被S的子集的和表示的正整数。</p>
+<p>给定一个序列 $a$，每次询问一个区间的神秘数。</p>
+</blockquote>
+<p>很久之前还讲过这个题，当时还要求带修。</p>
+<p>考虑加入当前的神秘数为 $x$。当加入一个数 $y$ 且 $y\le x$ 时神秘数会变为 $x+y$。当 $y&gt;x$ 时对答案不造成贡献。</p>
+<p>可以考虑值域倍增，对 $[1,1],[2,3],[4,7],\cdots,[2^k,2^k-1],\cdots$ 之间的元素分别维护前缀和和 rmq。</p>
+<p>每次查询的时候依次查区间最小值是否小于当前神秘数即可。如果小于的话直接加上区间和去下一个区间，不然直接返回答案。</p>
+<p>如果 $O(n)-O(1)$ 求 rmq 的话复杂度可以做到 $O(n\log\max(a[i]))$。</p>
+<p>我的代码就直接用 st 表了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define ll long long</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;&#x3D;9)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),write(x%10),void();</span><br><span class="line">&#125;</span><br><span class="line">int LOG[100005],a[100005],n,m;</span><br><span class="line">struct st&#123;</span><br><span class="line">	int st[100005][17];ll sum[100005];</span><br><span class="line">	void init(int liml,int limr)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[0]&#x3D;0;</span><br><span class="line">		for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">			if(a[i]&gt;&#x3D;liml&amp;&amp;a[i]&lt;&#x3D;limr)st[i][0]&#x3D;a[i],sum[i]&#x3D;sum[i-1]+a[i];</span><br><span class="line">			else st[i][0]&#x3D;0x3f3f3f3f,sum[i]&#x3D;sum[i-1];</span><br><span class="line">		for(rg int j&#x3D;1;(1&lt;&lt;j)&lt;&#x3D;n;j++)</span><br><span class="line">			for(rg int i&#x3D;1;i+(1&lt;&lt;j)&lt;&#x3D;n+1;i++)</span><br><span class="line">				st[i][j]&#x3D;min(st[i][j-1],st[i+(1&lt;&lt;(j-1))][j-1]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll query(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		int d&#x3D;LOG[r-l];</span><br><span class="line">		return min(st[l][d],st[r-(1&lt;&lt;d)+1][d]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll Sum(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		return sum[r]-sum[l-1];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;b[30];</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	n&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		a[i]&#x3D;read();</span><br><span class="line">	m&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">		LOG[i]&#x3D;LOG[i&gt;&gt;1]+1;</span><br><span class="line">	b[0].init(1,1);</span><br><span class="line">	for(rg int i&#x3D;1,t&#x3D;2;i&lt;&#x3D;29;i++,t&lt;&lt;&#x3D;1ll)</span><br><span class="line">		b[i].init(t,t+t-1);</span><br><span class="line">	for(rg int i&#x3D;1,l,r;i&lt;&#x3D;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		l&#x3D;read();r&#x3D;read();</span><br><span class="line">		ll ans&#x3D;0;int t&#x3D;0;</span><br><span class="line">		while(t&lt;&#x3D;29)</span><br><span class="line">		&#123;</span><br><span class="line">			if(ans+1ll&lt;min(b[t].query(l,r),(1ll&lt;&lt;(t+1))-1))</span><br><span class="line">				break;</span><br><span class="line">			ans+&#x3D;b[t].Sum(l,r);</span><br><span class="line">			t++;</span><br><span class="line">		&#125;</span><br><span class="line">		write(ans+1ll);puts(&quot;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>倍增</tag>
+        <tag>线段树</tag>
       </tags>
   </entry>
   <entry>
@@ -82,45 +121,6 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
 ]]></content>
       <tags>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【题解】[FJOI2016]神秘数</title>
-    <url>/2020/10/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-FJOI2016-%E7%A5%9E%E7%A7%98%E6%95%B0/</url>
-    <content><![CDATA[<blockquote>
-<p>题目大意：一个可重复数字集合S的神秘数定义为最小的不能被S的子集的和表示的正整数。</p>
-<p>给定一个序列 $a$，每次询问一个区间的神秘数。</p>
-</blockquote>
-<p>很久之前还讲过这个题，当时还要求带修。</p>
-<p>考虑加入当前的神秘数为 $x$。当加入一个数 $y$ 且 $y\le x$ 时神秘数会变为 $x+y$。当 $y&gt;x$ 时对答案不造成贡献。</p>
-<p>可以考虑值域倍增，对 $[1,1],[2,3],[4,7],\cdots,[2^k,2^k-1],\cdots$ 之间的元素分别维护前缀和和 rmq。</p>
-<p>每次查询的时候依次查区间最小值是否小于当前神秘数即可。如果小于的话直接加上区间和去下一个区间，不然直接返回答案。</p>
-<p>如果 $O(n)-O(1)$ 求 rmq 的话复杂度可以做到 $O(n\log\max(a[i]))$。</p>
-<p>我的代码就直接用 st 表了。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define ll long long</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;&#x3D;9)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),write(x%10),void();</span><br><span class="line">&#125;</span><br><span class="line">int LOG[100005],a[100005],n,m;</span><br><span class="line">struct st&#123;</span><br><span class="line">	int st[100005][17];ll sum[100005];</span><br><span class="line">	void init(int liml,int limr)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[0]&#x3D;0;</span><br><span class="line">		for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">			if(a[i]&gt;&#x3D;liml&amp;&amp;a[i]&lt;&#x3D;limr)st[i][0]&#x3D;a[i],sum[i]&#x3D;sum[i-1]+a[i];</span><br><span class="line">			else st[i][0]&#x3D;0x3f3f3f3f,sum[i]&#x3D;sum[i-1];</span><br><span class="line">		for(rg int j&#x3D;1;(1&lt;&lt;j)&lt;&#x3D;n;j++)</span><br><span class="line">			for(rg int i&#x3D;1;i+(1&lt;&lt;j)&lt;&#x3D;n+1;i++)</span><br><span class="line">				st[i][j]&#x3D;min(st[i][j-1],st[i+(1&lt;&lt;(j-1))][j-1]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll query(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		int d&#x3D;LOG[r-l];</span><br><span class="line">		return min(st[l][d],st[r-(1&lt;&lt;d)+1][d]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll Sum(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		return sum[r]-sum[l-1];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;b[30];</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	n&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		a[i]&#x3D;read();</span><br><span class="line">	m&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">		LOG[i]&#x3D;LOG[i&gt;&gt;1]+1;</span><br><span class="line">	b[0].init(1,1);</span><br><span class="line">	for(rg int i&#x3D;1,t&#x3D;2;i&lt;&#x3D;29;i++,t&lt;&lt;&#x3D;1ll)</span><br><span class="line">		b[i].init(t,t+t-1);</span><br><span class="line">	for(rg int i&#x3D;1,l,r;i&lt;&#x3D;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		l&#x3D;read();r&#x3D;read();</span><br><span class="line">		ll ans&#x3D;0;int t&#x3D;0;</span><br><span class="line">		while(t&lt;&#x3D;29)</span><br><span class="line">		&#123;</span><br><span class="line">			if(ans+1ll&lt;min(b[t].query(l,r),(1ll&lt;&lt;(t+1))-1))</span><br><span class="line">				break;</span><br><span class="line">			ans+&#x3D;b[t].Sum(l,r);</span><br><span class="line">			t++;</span><br><span class="line">		&#125;</span><br><span class="line">		write(ans+1ll);puts(&quot;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>倍增</tag>
-        <tag>线段树</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【游记】CSP 游记</title>
-    <url>/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/</url>
-    <content><![CDATA[<p>由于我的 blog 不会自动更新修改时间，为了防止引起恐慌，故 blog 更新时间不会显示原本的更新时间。</p>
-<h4 id="Part-1-S1"><a href="#Part-1-S1" class="headerlink" title="Part 1. S1"></a>Part 1. S1</h4><h5 id="DAY-2-DAY-1"><a href="#DAY-2-DAY-1" class="headerlink" title="DAY -2~DAY -1"></a>DAY -2~DAY -1</h5><p>Ys 让我们考了三场试，全都考得贼差，心态崩了。</p>
-<p>考试的时候笔用完了，考前就去文具店买了几只那种 $1$ 元钱的笔。</p>
-<p>初赛前复习了一下补码反码什么的，然后其它的都没怎么看。</p>
-<h5 id="DAY-1"><a href="#DAY-1" class="headerlink" title="DAY 1"></a>DAY 1</h5><p>上午 7:10 不到就跑到机房来了，等到 7:20 左右 ovor 来说是要到校门口集合。然后又来了几个人说不要。我也不是很懂。</p>
-<p>8:10 去做车。有幸做 春日野悠 先生的旁边。路上问了他一个题，然后被他随手 cut 了。我又被打击到了。途中经过了 SDFZ，Imakf 拍了几张照，和去年一模一样呢。</p>
-<p>到 湖南大学 以后有人找 Imakf，qiuly，踢个人 去签名。今年也见到了 老K ，只不过今年 zzt 比较走运没被 a 而已。</p>
-<p>卷子感觉比去年简单。但我阅读理解第三题还是炸的差不多。最后就蒙了个期望得分。蒙对了香农是我没想到的。</p>
-<p>考试的时候好多考场的钟坏了，这不是那个都市传说吗？相信聪明的你也是可以理解的吧。总之 +1s 就对了。</p>
-<p>考完回来在车上和绿水青山谈笑风生了一波。</p>
-<p>中午在 金拱门 吃的中饭。然后还被 T 神拉去打了会篮球。</p>
-]]></content>
-      <tags>
-        <tag>Other</tag>
       </tags>
   </entry>
 </search>
