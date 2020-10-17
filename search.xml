@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Welcome to clamee&#39;s new blog!</title>
-    <url>/1926/08/17/Welcome-to-clamee-s-new-blog/</url>
-    <content><![CDATA[<p>致 daisiki の米娜桑，</p>
-<p>马上就要吃午饭了呢,在这个特殊的日子里。</p>
-<p>能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。</p>
-<p>大约两年前我在 luogu 开通了我的第一个博客，之后也会基本搬运过来。但这不意味着在 luogu 上停更，以后在 luogu 博客上我还是会发布一些题解。以后大部分的题解，以及所有的其他内容都会在这里发表。至于要不要同步当然是看皮(wo)卡(zi)丘(ji)的的心情啦，毕竟皮卡丘的意愿也是很重要的呢。</p>
-<p>在搭建博客的过程中 T 神给了我极大的帮助，在这里非常感谢。顺便一提，T 神是个很可爱的妹子呢(<del>虽然说可爱的一直都只有男孩子而已呢</del>)。</p>
-<p>今天感觉是个很重要的日子呢，感觉会有大事发生，会有什么有名的长者之类的人物诞生吗，我也不知道，但是相信屏幕前的你也是可以明白的吧。啊，要到饭点了呢，大家都赶紧去吃饭吧。</p>
-]]></content>
-      <tags>
-        <tag>Other</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>【游记】CSP 游记</title>
     <url>/2020/12/30/CSP-%E6%B8%B8%E8%AE%B0/</url>
     <content><![CDATA[<p>由于我的 blog 不会自动更新修改时间，为了防止引起恐慌，故 blog 更新时间不会显示原本的更新时间。</p>
@@ -31,6 +17,62 @@
 ]]></content>
       <tags>
         <tag>Other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Welcome to clamee&#39;s new blog!</title>
+    <url>/1926/08/17/Welcome-to-clamee-s-new-blog/</url>
+    <content><![CDATA[<p>致 daisiki の米娜桑，</p>
+<p>马上就要吃午饭了呢,在这个特殊的日子里。</p>
+<p>能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。</p>
+<p>大约两年前我在 luogu 开通了我的第一个博客，之后也会基本搬运过来。但这不意味着在 luogu 上停更，以后在 luogu 博客上我还是会发布一些题解。以后大部分的题解，以及所有的其他内容都会在这里发表。至于要不要同步当然是看皮(wo)卡(zi)丘(ji)的的心情啦，毕竟皮卡丘的意愿也是很重要的呢。</p>
+<p>在搭建博客的过程中 T 神给了我极大的帮助，在这里非常感谢。顺便一提，T 神是个很可爱的妹子呢(<del>虽然说可爱的一直都只有男孩子而已呢</del>)。</p>
+<p>今天感觉是个很重要的日子呢，感觉会有大事发生，会有什么有名的长者之类的人物诞生吗，我也不知道，但是相信屏幕前的你也是可以明白的吧。啊，要到饭点了呢，大家都赶紧去吃饭吧。</p>
+]]></content>
+      <tags>
+        <tag>Other</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【题解】[FJOI2016]神秘数</title>
+    <url>/2020/10/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-FJOI2016-%E7%A5%9E%E7%A7%98%E6%95%B0/</url>
+    <content><![CDATA[<blockquote>
+<p>题目大意：一个可重复数字集合S的神秘数定义为最小的不能被S的子集的和表示的正整数。</p>
+<p>给定一个序列 $a$，每次询问一个区间的神秘数。</p>
+</blockquote>
+<p>很久之前还讲过这个题，当时还要求带修。</p>
+<p>考虑加入当前的神秘数为 $x$。当加入一个数 $y$ 且 $y\le x$ 时神秘数会变为 $x+y$。当 $y&gt;x$ 时对答案不造成贡献。</p>
+<p>可以考虑值域倍增，对 $[1,1],[2,3],[4,7],\cdots,[2^k,2^k-1],\cdots$ 之间的元素分别维护前缀和和 rmq。</p>
+<p>每次查询的时候依次查区间最小值是否小于当前神秘数即可。如果小于的话直接加上区间和去下一个区间，不然直接返回答案。</p>
+<p>如果 $O(n)-O(1)$ 求 rmq 的话复杂度可以做到 $O(n\log\max(a[i]))$。</p>
+<p>我的代码就直接用 st 表了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define ll long long</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;&#x3D;9)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),write(x%10),void();</span><br><span class="line">&#125;</span><br><span class="line">int LOG[100005],a[100005],n,m;</span><br><span class="line">struct st&#123;</span><br><span class="line">	int st[100005][17];ll sum[100005];</span><br><span class="line">	void init(int liml,int limr)</span><br><span class="line">	&#123;</span><br><span class="line">		sum[0]&#x3D;0;</span><br><span class="line">		for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">			if(a[i]&gt;&#x3D;liml&amp;&amp;a[i]&lt;&#x3D;limr)st[i][0]&#x3D;a[i],sum[i]&#x3D;sum[i-1]+a[i];</span><br><span class="line">			else st[i][0]&#x3D;0x3f3f3f3f,sum[i]&#x3D;sum[i-1];</span><br><span class="line">		for(rg int j&#x3D;1;(1&lt;&lt;j)&lt;&#x3D;n;j++)</span><br><span class="line">			for(rg int i&#x3D;1;i+(1&lt;&lt;j)&lt;&#x3D;n+1;i++)</span><br><span class="line">				st[i][j]&#x3D;min(st[i][j-1],st[i+(1&lt;&lt;(j-1))][j-1]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll query(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		int d&#x3D;LOG[r-l];</span><br><span class="line">		return min(st[l][d],st[r-(1&lt;&lt;d)+1][d]);</span><br><span class="line">	&#125;</span><br><span class="line">	ll Sum(int l,int r)</span><br><span class="line">	&#123;</span><br><span class="line">		return sum[r]-sum[l-1];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;b[30];</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	n&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		a[i]&#x3D;read();</span><br><span class="line">	m&#x3D;read();</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">		LOG[i]&#x3D;LOG[i&gt;&gt;1]+1;</span><br><span class="line">	b[0].init(1,1);</span><br><span class="line">	for(rg int i&#x3D;1,t&#x3D;2;i&lt;&#x3D;29;i++,t&lt;&lt;&#x3D;1ll)</span><br><span class="line">		b[i].init(t,t+t-1);</span><br><span class="line">	for(rg int i&#x3D;1,l,r;i&lt;&#x3D;m;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		l&#x3D;read();r&#x3D;read();</span><br><span class="line">		ll ans&#x3D;0;int t&#x3D;0;</span><br><span class="line">		while(t&lt;&#x3D;29)</span><br><span class="line">		&#123;</span><br><span class="line">			if(ans+1ll&lt;min(b[t].query(l,r),(1ll&lt;&lt;(t+1))-1))</span><br><span class="line">				break;</span><br><span class="line">			ans+&#x3D;b[t].Sum(l,r);</span><br><span class="line">			t++;</span><br><span class="line">		&#125;</span><br><span class="line">		write(ans+1ll);puts(&quot;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>倍增</tag>
+        <tag>线段树</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>【题解】[HA2009]求回文串</title>
+    <url>/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/</url>
+    <content><![CDATA[<p>题目大意：</p>
+<blockquote>
+<p>给你一个长度为 $n$ 的字符串，每次可以交换相邻的两个字符，求最小的交换次数使得将字符串变成回文串($n\le 10^6$)。</p>
+</blockquote>
+<p>可以考虑终止状态和起始状态的联系，可以构建序列 b 表示依次给每个字符找到原序列中的对应字符的出现位置，答案即为 b 数组的逆序对数。</p>
+<p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abbca</span><br><span class="line">abcba</span><br></pre></td></tr></table></figure>
+<p>构建出来的序列为 <code>1 2 4 3 5</code>，所以答案为 $1$。</p>
+<p>那么我们就将问题转化为求出一个序列使得它对应上去了以后逆序对数最小。</p>
+<p>考虑任意两种字符之间的贡献不难发现，我们可以钦定所有字符的左边不动，只改变右边。于是我们可以构造出一个新的序列。然后求一波逆序对即可。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define int long long</span><br><span class="line">char s[1000005];</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;10)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),putchar(x%10+48),void();</span><br><span class="line">&#125;</span><br><span class="line">int n,t[26],p[1000005],r[26],b[1000005];</span><br><span class="line">int tree[1000005],cnt;</span><br><span class="line">bool vis[1000005];</span><br><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">	while(x&lt;&#x3D;n)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[x]++;</span><br><span class="line">		x+&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0;</span><br><span class="line">	while(x)</span><br><span class="line">	&#123;</span><br><span class="line">		re+&#x3D;tree[x];</span><br><span class="line">		x-&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">	return re;</span><br><span class="line">&#125;</span><br><span class="line">int abs2(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return x&gt;0?x:-x;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%s&quot;,s+1);</span><br><span class="line">	n&#x3D;strlen(s+1);</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		t[now]++;</span><br><span class="line">		p[i]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;i;</span><br><span class="line">	&#125;</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;26;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(t[i]&amp;1)</span><br><span class="line">		&#123;</span><br><span class="line">			if(cnt)</span><br><span class="line">			&#123;</span><br><span class="line">				puts(&quot;-1&quot;);return 0;</span><br><span class="line">			&#125;</span><br><span class="line">			cnt&#x3D;i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(cnt)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;r[cnt],las&#x3D;0;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;t[cnt]&#x2F;2;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			now&#x3D;p[now];</span><br><span class="line">		&#125;</span><br><span class="line">		if(las)</span><br><span class="line">			p[las]&#x3D;p[now];</span><br><span class="line">		b[n&#x2F;2+1]&#x3D;now;</span><br><span class="line">		vis[now]&#x3D;1;</span><br><span class="line">	&#125;</span><br><span class="line">	int ans&#x3D;0,ss&#x3D;0;</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n&#x2F;2+ss;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(vis[i])&#123;ss++;continue;&#125;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		vis[i]&#x3D;vis[r[now]]&#x3D;1;</span><br><span class="line">		b[i-ss]&#x3D;i;b[n-i+ss+1]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;p[r[now]];</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i&#x3D;n;i&gt;&#x3D;1;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+&#x3D;sum(b[i]);</span><br><span class="line">		add(b[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	write(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>字符串</tag>
+        <tag>树状数组</tag>
+        <tag>排序</tag>
+        <tag>贪心</tag>
       </tags>
   </entry>
   <entry>
@@ -79,28 +121,6 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
 ]]></content>
       <tags>
         <tag>学习笔记</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>【题解】[HA2009]求回文串</title>
-    <url>/2020/10/08/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-HA2009-%E6%B1%82%E5%9B%9E%E6%96%87%E4%B8%B2/</url>
-    <content><![CDATA[<p>题目大意：</p>
-<blockquote>
-<p>给你一个长度为 $n$ 的字符串，每次可以交换相邻的两个字符，求最小的交换次数使得将字符串变成回文串($n\le 10^6$)。</p>
-</blockquote>
-<p>可以考虑终止状态和起始状态的联系，可以构建序列 b 表示依次给每个字符找到原序列中的对应字符的出现位置，答案即为 b 数组的逆序对数。</p>
-<p>例如：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">abbca</span><br><span class="line">abcba</span><br></pre></td></tr></table></figure>
-<p>构建出来的序列为 <code>1 2 4 3 5</code>，所以答案为 $1$。</p>
-<p>那么我们就将问题转化为求出一个序列使得它对应上去了以后逆序对数最小。</p>
-<p>考虑任意两种字符之间的贡献不难发现，我们可以钦定所有字符的左边不动，只改变右边。于是我们可以构造出一个新的序列。然后求一波逆序对即可。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define int long long</span><br><span class="line">char s[1000005];</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0,k&#x3D;1;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;10)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),putchar(x%10+48),void();</span><br><span class="line">&#125;</span><br><span class="line">int n,t[26],p[1000005],r[26],b[1000005];</span><br><span class="line">int tree[1000005],cnt;</span><br><span class="line">bool vis[1000005];</span><br><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">	while(x&lt;&#x3D;n)</span><br><span class="line">	&#123;</span><br><span class="line">		tree[x]++;</span><br><span class="line">		x+&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int sum(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int re&#x3D;0;</span><br><span class="line">	while(x)</span><br><span class="line">	&#123;</span><br><span class="line">		re+&#x3D;tree[x];</span><br><span class="line">		x-&#x3D;x&amp;-x;</span><br><span class="line">	&#125;</span><br><span class="line">	return re;</span><br><span class="line">&#125;</span><br><span class="line">int abs2(int x)</span><br><span class="line">&#123;</span><br><span class="line">	return x&gt;0?x:-x;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	scanf(&quot;%s&quot;,s+1);</span><br><span class="line">	n&#x3D;strlen(s+1);</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		t[now]++;</span><br><span class="line">		p[i]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;i;</span><br><span class="line">	&#125;</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;26;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(t[i]&amp;1)</span><br><span class="line">		&#123;</span><br><span class="line">			if(cnt)</span><br><span class="line">			&#123;</span><br><span class="line">				puts(&quot;-1&quot;);return 0;</span><br><span class="line">			&#125;</span><br><span class="line">			cnt&#x3D;i;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	if(cnt)</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;r[cnt],las&#x3D;0;</span><br><span class="line">		for(int i&#x3D;1;i&lt;&#x3D;t[cnt]&#x2F;2;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			now&#x3D;p[now];</span><br><span class="line">		&#125;</span><br><span class="line">		if(las)</span><br><span class="line">			p[las]&#x3D;p[now];</span><br><span class="line">		b[n&#x2F;2+1]&#x3D;now;</span><br><span class="line">		vis[now]&#x3D;1;</span><br><span class="line">	&#125;</span><br><span class="line">	int ans&#x3D;0,ss&#x3D;0;</span><br><span class="line">	for(rg int i&#x3D;1;i&lt;&#x3D;n&#x2F;2+ss;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(vis[i])&#123;ss++;continue;&#125;</span><br><span class="line">		int now&#x3D;s[i]-&#39;A&#39;;</span><br><span class="line">		vis[i]&#x3D;vis[r[now]]&#x3D;1;</span><br><span class="line">		b[i-ss]&#x3D;i;b[n-i+ss+1]&#x3D;r[now];</span><br><span class="line">		r[now]&#x3D;p[r[now]];</span><br><span class="line">	&#125;</span><br><span class="line">	for(int i&#x3D;n;i&gt;&#x3D;1;i--)</span><br><span class="line">	&#123;</span><br><span class="line">		ans+&#x3D;sum(b[i]);</span><br><span class="line">		add(b[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	write(ans);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <tags>
-        <tag>字符串</tag>
-        <tag>树状数组</tag>
-        <tag>排序</tag>
-        <tag>贪心</tag>
       </tags>
   </entry>
 </search>
