@@ -20,6 +20,20 @@
       </tags>
   </entry>
   <entry>
+    <title>Welcome to clamee&#39;s new blog!</title>
+    <url>/1926/08/17/Welcome-to-clamee-s-new-blog/</url>
+    <content><![CDATA[<p>致 daisiki の米娜桑，</p>
+<p>马上就要吃午饭了呢,在这个特殊的日子里。</p>
+<p>能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。</p>
+<p>大约两年前我在 luogu 开通了我的第一个博客，之后也会基本搬运过来。但这不意味着在 luogu 上停更，以后在 luogu 博客上我还是会发布一些题解。以后大部分的题解，以及所有的其他内容都会在这里发表。至于要不要同步当然是看皮(wo)卡(zi)丘(ji)的的心情啦，毕竟皮卡丘的意愿也是很重要的呢。</p>
+<p>在搭建博客的过程中 T 神给了我极大的帮助，在这里非常感谢。顺便一提，T 神是个很可爱的妹子呢(<del>虽然说可爱的一直都只有男孩子而已呢</del>)。</p>
+<p>今天感觉是个很重要的日子呢，感觉会有大事发生，会有什么有名的长者之类的人物诞生吗，我也不知道，但是相信屏幕前的你也是可以明白的吧。啊，要到饭点了呢，大家都赶紧去吃饭吧。</p>
+]]></content>
+      <tags>
+        <tag>Other</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【题解】[FJOI2016]神秘数</title>
     <url>/2020/10/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-FJOI2016-%E7%A5%9E%E7%A7%98%E6%95%B0/</url>
     <content><![CDATA[<blockquote>
@@ -59,20 +73,6 @@
         <tag>树状数组</tag>
         <tag>排序</tag>
         <tag>贪心</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Welcome to clamee&#39;s new blog!</title>
-    <url>/1926/08/17/Welcome-to-clamee-s-new-blog/</url>
-    <content><![CDATA[<p>致 daisiki の米娜桑，</p>
-<p>马上就要吃午饭了呢,在这个特殊的日子里。</p>
-<p>能在这个美妙的时间搭建我的新博客，对于我而言是非常~开心的哦。以后如果大家想到我的博客来转转，我是非常~欢迎的呢。</p>
-<p>大约两年前我在 luogu 开通了我的第一个博客，之后也会基本搬运过来。但这不意味着在 luogu 上停更，以后在 luogu 博客上我还是会发布一些题解。以后大部分的题解，以及所有的其他内容都会在这里发表。至于要不要同步当然是看皮(wo)卡(zi)丘(ji)的的心情啦，毕竟皮卡丘的意愿也是很重要的呢。</p>
-<p>在搭建博客的过程中 T 神给了我极大的帮助，在这里非常感谢。顺便一提，T 神是个很可爱的妹子呢(<del>虽然说可爱的一直都只有男孩子而已呢</del>)。</p>
-<p>今天感觉是个很重要的日子呢，感觉会有大事发生，会有什么有名的长者之类的人物诞生吗，我也不知道，但是相信屏幕前的你也是可以明白的吧。啊，要到饭点了呢，大家都赶紧去吃饭吧。</p>
-]]></content>
-      <tags>
-        <tag>Other</tag>
       </tags>
   </entry>
   <entry>
@@ -121,6 +121,130 @@ x^2\equiv n(\bmod p)</script><p>这里要求 $p$ 是奇质数，我们不妨在�
 ]]></content>
       <tags>
         <tag>学习笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>字符串总结</title>
+    <url>/2020/10/25/%E6%B5%85%E8%B0%88%E5%9B%9E%E6%96%87%E8%87%AA%E5%8A%A8%E6%9C%BA/</url>
+    <content><![CDATA[<h4 id="Hash"><a href="#Hash" class="headerlink" title="Hash"></a>Hash</h4><p>Hash 是最简单同时也是泛用性最强的字符串算法。它的思想很简单：设计 Hash 函数 $f$，两个字符串的 hash 函数值一样时两个字符串一样，否则两个字符串不一样。在设计 Hash 函数时，我们主要关心的是时间复杂度和准确率。例如有一些提高准确率的方法：自然溢出、多模数 Hash……</p>
+<p>在大多数情况下，形如 $f(x)=A+Bx+Cx^2\cdots$ 是一种简单高效的 Hash。下面的 Skip 也是基于这种 Hash 方法。</p>
+<h5 id="Skip：快速得到子串-Hash-值"><a href="#Skip：快速得到子串-Hash-值" class="headerlink" title="Skip：快速得到子串 Hash 值"></a>Skip：快速得到子串 Hash 值</h5><blockquote>
+<p>给定一个串 $s$，每次查询子串 $s[l:r]$ 的 Hash 值。</p>
+</blockquote>
+<p>设 $g(i)$ 表示 $s[1:i]$ 的 Hash 值。</p>
+<p>考虑我们的 $hash$ 函数时实际上是一个多项式，那么有 $g(i)=x*g(i-1)+b$。</p>
+<p>可以发现，对于前 $l-1$ 个元素，它们对 $g(r)$ 的贡献为 $x^{r-l+1}g(l-1)$。</p>
+<p>将这个贡献减掉，就可以得到正确的 $Hash$ 值。</p>
+<p>即 $f(s[l:r])=f([s[1:r]])-x^{r-l+1}f(s[1:l-1])$。</p>
+<h4 id="KMP-求前缀函数"><a href="#KMP-求前缀函数" class="headerlink" title="KMP 求前缀函数"></a>KMP 求前缀函数</h4><p>给定一个长度为 $n$ 的字符串 $s$，其 <strong>前缀函数</strong> 被定义为一个长度为 $n$ 的数组 $\pi$ 。其中 $\pi[i]$ 的定义是：</p>
+<p>$s[1:i]$ 的最长真 border 长度。</p>
+<p>这里不妨先讲一下 border。</p>
+<h5 id="border-和-border-的性质"><a href="#border-和-border-的性质" class="headerlink" title="border 和 border 的性质"></a>border 和 border 的性质</h5><blockquote>
+<p>Hillary: Open the border.</p>
+<p>Trump: Build a wall.</p>
+<p>DAN: I AK IOI.</p>
+</blockquote>
+<p>border 是一个字符串相同前缀和后缀。</p>
+<p>例如在字符串 <code>daniel_dandandan</code> 中，$\varnothing,dan,daniel_dandandan$ 都是该字符串的 border。</p>
+<ul>
+<li>border 的性质</li>
+</ul>
+<p>字符串  $S$ 的所有 border 可以被划分成不超过 $\log_2|S|$ 段，每一段的长度是等差数列。</p>
+<p>证明：</p>
+<ul>
+<li><p>引理 $1$：若字符串 $S$ 存在一个长度为 $k$ 的 border，那么 $|S|-k$ 为字符串的一个周期。</p>
+</li>
+<li><p>引理 $2$：若 $p,q$ 为字符串的周期且 $p+q\le|S|-gcd(p,q) $，那么 $gcd(p,q)$ 也为字符串的一个周期。</p>
+</li>
+</ul>
+<p>考虑 border 大于 $\frac{|S|}{2} $ 的情况，由引理一得 $q=|S|-k $ 为 $S$ 的最小周期，其中 $k$ 为 $S$ 的最长 border，由引理二得 $|S|-aq\geq  \frac{|S|}{2} $ 为 $S$ 的 $border$。</p>
+<p>递归证明 border 小于 $\frac{|S|}{2} $ 即可。</p>
+<p>回文 border 是一个回文的 border。</p>
+<p>类似地，回文 border 也有如上性质，读者可以自行证明。</p>
+<p>这里只给出结论：字符串  $S$ 的所有回文 border 可以被划分成不超过 $\log_2|S|$ 段，每一段的长度是等差数列。</p>
+<p>这里继续讲前缀函数和 KMP。</p>
+<p>KMP 是一个高效的求前缀函数的算法。</p>
+<p>这个算法其实很简单。假设我们已经求出了前 $i$ 个位置的前缀函数。求第 $i+1$ 个位置的时候我们不停地跳前缀匹配就行了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">while(k&amp;&amp;s2[k+1]!&#x3D;s2[i+1])k&#x3D;nxt[k];</span><br><span class="line">nxt[i+1]&#x3D;(s2[i+1]&#x3D;&#x3D;s2[k+1])?(++k):0;</span><br></pre></td></tr></table></figure>
+<p>代码就两行。</p>
+<p>因为 while 每执行一次 $k$  至少减少 $1$，$k$ 最多增加 $n$ 所以复杂度是线性的。</p>
+<h4 id="Manacher"><a href="#Manacher" class="headerlink" title="Manacher"></a>Manacher</h4><p>Manacher 算法可以求出以每个位置为回文中轴的回文半径。</p>
+<p>用前面提到的 $ Hash$ 算法套二分可以在 $O(n\log_2n)$ 的时间复杂度求解。而 Manacher 算法可以做到 $O(n)$。</p>
+<p>我们始终维护一个最靠右的最长回文串 $s[l:r]$，记它的中轴为 $mid$。对于以 $x$ 为回文中心的回文串，可以直接找到与它关于$mid$ 对称的位置的回文半径，此时要保证回文串不超过 $r$，因为 $r$ 的右边是未知的，所以要和 $r-x+1$ 取 min，并从回文半径开始更新。最后再更新 $s[l:r]$。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(t&lt;&#x3D;r)ans[t]&#x3D;min(ans[2*mid-t],r-t+1);</span><br><span class="line">while(b[ans[t]+t]&#x3D;&#x3D;b[t-ans[t]])ans[t]++;</span><br><span class="line">if(t+ans[t]&gt;r)r&#x3D;t+ans[t]-1,mid&#x3D;t;</span><br></pre></td></tr></table></figure>
+<p>复杂度分析:</p>
+<p>当第一行执行完 <code>t+ans[t]-1&lt;r</code> 时。第二行 <code>ans[t]</code> 不会进行更新。</p>
+<p>当 <code>t+ans[t]-1=r</code> 时，每执行一次 <code>while</code> r 都会加 1，因为 r 最大为 n。所以 <code>while</code> 最多执行 n 次。</p>
+<p>故复杂度为 $O(n)$。</p>
+<h4 id="Z-函数-扩展-KMP"><a href="#Z-函数-扩展-KMP" class="headerlink" title="Z 函数(扩展 KMP)"></a>Z 函数(扩展 KMP)</h4><p>一个字符串的 Z 函数是一个长度为 $n$ 的数组，其中 $z[i]=lcp(s[1:n],s[i:n])$。</p>
+<p>求解 Z 函数的方法与 Manacher 类似。</p>
+<p>维护一个最靠右的前缀 lcp $s[l:r]$。对于从 x 直接从 $z[x-l+1]$  开始匹配即可。</p>
+<p>代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if(i&lt;&#x3D;r)</span><br><span class="line">	z[i]&#x3D;min(z[i-l],r-i+1);</span><br><span class="line">while(i+z[i]&lt;n&amp;&amp;s[z[i]]&#x3D;&#x3D;s[i+z[i]])++z[i];</span><br><span class="line">if(i+z[i]-1&gt;r)</span><br><span class="line">	l&#x3D;i,r&#x3D;i+z[i]-1;</span><br></pre></td></tr></table></figure>
+<p>读者可以结合 manacher 部分自行分析。</p>
+<h4 id="字符串匹配"><a href="#字符串匹配" class="headerlink" title="字符串匹配"></a>字符串匹配</h4><p>在 OI 学习中，最简单实用的字符串匹配方法是利用前缀函数或字符串 Hash 求匹配。另外也能用 z 函数做字符串匹配。</p>
+<p>此外还有更高效的匹配算法，例如 Boyer-Moore 算法，当然博主也不会，博主肯定不会讲。</p>
+<ul>
+<li>Hash 方法</li>
+</ul>
+<p>对于文本串的每个匹配串长度的的子串求出 Hash 值，和匹配串比较即可。</p>
+<ul>
+<li>前缀函数方法</li>
+</ul>
+<p>利用前缀函数快速跳 border 匹配。</p>
+<ul>
+<li>z 函数方法</li>
+</ul>
+<p>用一个分隔符将匹配串和文本串连起来。求 $z$ 函数。通过 $z$ 函数的定义不难发现所有文本串位置 z 函数值为文本串长度的即为匹配位置</p>
+<h4 id="Lyndon-分解"><a href="#Lyndon-分解" class="headerlink" title="Lyndon 分解"></a>Lyndon 分解</h4><p>一些定义：</p>
+<p>Lyndon 串：字典序小于其所有后缀字典序的字符串。</p>
+<p>Lyndon 分解：将一个字符串分解成若干依次字典序非严格递减的 Lyndon 串。</p>
+<p>近似 Lyndon 串：一个字符串 $t=ww\cdots \overline w$，其中 $w$ 是一个 Lyndon 串。</p>
+<p>可以用 Duval 算法来求 Lyndon 分解。(划记：它用到了贪心的思想，初赛可能会考。)</p>
+<p>在算法流程中，我们将待分解字符串分成 $s1s2s3$ 相连的三个部分。其中 $s1$ 是一个 Lyndon 串，并且已经求出了它的 Lyndon 分解，$s2$ 是一个近似 Lyndon 串，$s3$ 是未处理的部分。</p>
+<p>每次将 $s3$ 的首字符接到 $s2$ 后面，如果 $s2$ 不再是近似 Lyndon 串，就将 $s2$ 的一部分前缀接到 $s1$ 末尾。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">for(rg int i&#x3D;1,j,k;i&lt;&#x3D;n;)</span><br><span class="line">&#123;</span><br><span class="line">	j&#x3D;i;k&#x3D;i+1;</span><br><span class="line">	while(k&lt;&#x3D;n&amp;&amp;s[j]&lt;&#x3D;s[k])</span><br><span class="line">	&#123;</span><br><span class="line">		if(s[j]&lt;s[k])j&#x3D;i;</span><br><span class="line">		else j++;</span><br><span class="line">		k++;</span><br><span class="line">	&#125;</span><br><span class="line">	while(i&lt;&#x3D;j)</span><br><span class="line">	&#123;</span><br><span class="line">		ans^&#x3D;(i+k-j-1);</span><br><span class="line">		i+&#x3D;k-j;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以证明复杂度是 $O(n)$ 的。</p>
+<h5 id="最小表示法"><a href="#最小表示法" class="headerlink" title="最小表示法"></a>最小表示法</h5><p>字符串 $s$ 的最小表示为与 $s$ 循环同构的所有字符串中字典序最小的字符串。</p>
+<p>对于长度为 $n$ 的串 $s$，可以用 Lyndon 分解求出最小表示法。</p>
+<p>对 $ss$ 进行 Lyndon 分解，找到垮过这两个串的 Lyndon 串的首字母，从它开始之后 $n$ 个数就是 $s$ 的最小表示法。</p>
+<h4 id="Trie"><a href="#Trie" class="headerlink" title="Trie"></a>Trie</h4><p>字典树 Trie，是一种数据结构。</p>
+<p>OI wiki 上的图：<br><img src="https://oi-wiki.org/string/images/trie1.png" alt=""></p>
+<h4 id="AC-自动机-ACAM"><a href="#AC-自动机-ACAM" class="headerlink" title="AC 自动机(ACAM)"></a>AC 自动机(ACAM)</h4><p>多匹配串匹配：</p>
+<blockquote>
+<p>给定 $n$个模式串 $s_i$ 和一个文本串 $t$，求有多少个不同的模式串在文本串里出现过。</p>
+</blockquote>
+<p>可以先将这 $n$ 个模式串丢到 trie 上，现在问题变为我们要像构造前缀函数一样构造出函数 $fail$，表示所有字符串与当前节点所代表的字符串的最长 border 所在节点，用 $fail$ 来跑匹配。</p>
+<p>可以使用广搜来进行这一过程：</p>
+<p>如果我们当前考虑到了一个节点，那么它的 $fail$ 应该指向它的父亲的 $fail$ 连出相同字符边的节点。然后依次进行广搜即可。需要注意如果一个点没有相应字符的边，则将它连到它的 $fail$ 的相应字符边。</p>
+<p>代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void get_nxt()</span><br><span class="line">&#123;</span><br><span class="line">	queue&lt;int&gt; q;</span><br><span class="line">	for(int i&#x3D;0;i&lt;&#x3D;25;i++)</span><br><span class="line">		if(e[0].a[i])e[e[0].a[i]].nxt&#x3D;0,q.push(e[0].a[i]);</span><br><span class="line">	while(!q.empty())</span><br><span class="line">	&#123;</span><br><span class="line">		int now&#x3D;q.front();q.pop();</span><br><span class="line">		for(int i&#x3D;0;i&lt;&#x3D;25;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(e[now].a[i])</span><br><span class="line">			&#123;</span><br><span class="line">				e[e[now].a[i]].nxt&#x3D;e[e[now].nxt].a[i];</span><br><span class="line">				q.push(e[now].a[i]);</span><br><span class="line">			&#125;</span><br><span class="line">			else e[now].a[i]&#x3D;e[e[now].nxt].a[i];</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="回文自动机-PAM"><a href="#回文自动机-PAM" class="headerlink" title="回文自动机(PAM)"></a>回文自动机(PAM)</h4><p>AC 自动机也由转移边和 fail 指针构成。</p>
+<p>在回文自动机上每走一条转移边表示在字符串两边同时加上一个字符。</p>
+<p>回文自动机有两个根，一个根表示奇数回文串，一个根表示偶数回文串，分别命名奇根偶根，一开始偶根的 $fail$ 指针指向奇根。</p>
+<p>构建方法：</p>
+<p>考虑增量法构建。</p>
+<p>每次从上一次插入到的点不停跳 $fa$ 满足条件的位置然后将新点连上去即可。简单易懂。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int getfa(int p,int now)</span><br><span class="line">&#123;</span><br><span class="line">    while(s[now]!&#x3D;s[now-e[p].len-1])p&#x3D;e[p].fa;</span><br><span class="line">    return p;</span><br><span class="line">&#125;</span><br><span class="line">void add(int x,int now)</span><br><span class="line">&#123;</span><br><span class="line">    int p&#x3D;getfa(las,now);</span><br><span class="line">    if(!e[p].ch[x])</span><br><span class="line">    &#123;</span><br><span class="line">        e[++tot].len&#x3D;e[p].len+2;</span><br><span class="line">        int t&#x3D;getfa(e[p].fa,now);</span><br><span class="line">        e[tot].fa&#x3D;e[t].ch[x];</span><br><span class="line">        e[tot].num&#x3D;e[e[tot].fa].num+1;</span><br><span class="line">        e[p].ch[x]&#x3D;tot;</span><br><span class="line">    &#125;</span><br><span class="line">    las&#x3D;e[p].ch[x];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="序列自动机"><a href="#序列自动机" class="headerlink" title="序列自动机"></a>序列自动机</h4><p>在这个自动机上从源点到每一个节点都是一个原串子序列。</p>
+<p>构建方法：</p>
+<p>考虑暴力：每次遍历一遍这个自动机，将没有当前值的转移边的节点向新节点连一条边这样是 $O(n)-O(1)$。</p>
+<p>用平衡树来优化这一过程可以 $O(\log_2n)-O(\log_2n)$。</p>
+<h4 id="后缀数组"><a href="#后缀数组" class="headerlink" title="后缀数组"></a>后缀数组</h4><p>后缀数组 $sa$ 表示字符串每个排名的后缀的首字母位置，可以通过后缀排序求解。后缀排序可以用 DC3 或 SA-IS 做到 $O(n)$。或可以通过倍增算法 + 基数排序做到 $O(n\log_2n)$。一般在 OI 比赛中，我们主要采用后面的算法。</p>
+<ul>
+<li>用 $sa$ 求 $height$</li>
+</ul>
+<p>记 $height_i$ 表示排名为 $i-1$ 与排名为 $i$ 的 $lcp$ 长度。它可以通过 $sa$ 快速求出：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void geth()</span><br><span class="line">&#123;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">		rk[sa[i]]&#x3D;i;</span><br><span class="line">	int k&#x3D;0;</span><br><span class="line">	for(int i&#x3D;1;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(rk[i]&#x3D;&#x3D;1)continue;</span><br><span class="line">		if(k)--k;</span><br><span class="line">		int j&#x3D;sa[rk[i]-1];</span><br><span class="line">		while(i+k&lt;&#x3D;n&amp;&amp;j+k&lt;&#x3D;n&amp;&amp;s[i+k]&#x3D;&#x3D;s[j+k])++k;</span><br><span class="line">		h[rk[i]]&#x3D;k;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="后缀自动机"><a href="#后缀自动机" class="headerlink" title="后缀自动机"></a>后缀自动机</h4><p>考虑增量法构建。</p>
+<p>每次分三种情况讨论。</p>
+<p>因为这个比较难，看我的博客不一定能看懂，所以还是推荐去看专门讲这个的博客。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void add(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int p&#x3D;las;int np&#x3D;las&#x3D;++tot;f[tot]&#x3D;1;</span><br><span class="line">	e[np].len&#x3D;e[p].len+1;</span><br><span class="line">	for(;p&amp;&amp;!e[p].ch[x];p&#x3D;e[p].fa)e[p].ch[x]&#x3D;np;</span><br><span class="line">	if(!p)e[np].fa&#x3D;1;</span><br><span class="line">	else</span><br><span class="line">	&#123;</span><br><span class="line">		int q&#x3D;e[p].ch[x];</span><br><span class="line">		if(e[q].len&#x3D;&#x3D;e[p].len+1)e[np].fa&#x3D;q;</span><br><span class="line">		else</span><br><span class="line">		&#123;</span><br><span class="line">			int nq&#x3D;++tot;</span><br><span class="line">			e[nq]&#x3D;e[q];</span><br><span class="line">			e[nq].len&#x3D;e[p].len+1;</span><br><span class="line">			e[q].fa&#x3D;e[np].fa&#x3D;nq;</span><br><span class="line">			for(;p&amp;&amp;e[p].ch[x]&#x3D;&#x3D;q;p&#x3D;e[p].fa)e[p].ch[x]&#x3D;nq;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>字符串</tag>
       </tags>
   </entry>
 </search>
