@@ -1,0 +1,238 @@
+
+<!DOCTYPE html>
+<html lang="zh-HK" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>【题解】[WC2016]论战捆竹竿 - Clamee&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Clamee,"> 
+    <meta name="description" content="题目：
+
+竹林里有无数根完全一样的短竹子,每一根竹子由 n 节组成,每一节都被染上了颜色,竹子不可以颠倒。每次你可以选择一根短竹子,短竹子底端若干节(可以是 0节)与竹竿的最上面若干节对应地一节一节,"> 
+    <meta name="author" content="Clamee"> 
+    <link rel="alternative" href="atom.xml" title="Clamee&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/clam2.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Clamee&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">【题解】[WC2016]论战捆竹竿</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">【题解】[WC2016]论战捆竹竿</h1>
+        <div class="stuff">
+            <span>一月 02, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E5%AD%97%E7%AC%A6%E4%B8%B2/" rel="tag">字符串</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%9C%80%E7%9F%AD%E8%B7%AF/" rel="tag">最短路</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>题目：</p>
+<blockquote>
+<p>竹林里有无数根完全一样的短竹子,每一根竹子由 n 节组成,每一节都被染上了颜色,竹子不可以颠倒。<br>每次你可以选择一根短竹子,短竹子底端若干节(可以是 0节)与竹竿的最上面若干节对应地一节一节捆起来,而短竹子前面剩下的节伸出去,这样就得到了一根更长的竹竿。小 W 对竹竿的审美要求很高,他捆竹竿时有一个癖好:如果两根竹子的某两节被捆在了一起,那么它们的颜色必须相同。现在请你求出在竹竿长度超过 w 的情况下,小 W 可以捆出多少种长度不同的竹竿。其中,竹竿的长度指从底端到顶端的<br>竹子的节的个数。<br>$n \le 5 \cdot 10^5 ,w \le 10^{18}$。</p>
+</blockquote>
+<p>众所周知 $border$ 有一个性质：</p>
+<p>字符串  $S$ 的所有 border 可以被划分成不超过 $\log_2|S|$ 段，每一段的长度是等差数列。</p>
+<p>假设现在有 $k$ 个等差数列。</p>
+<p>不妨，先考虑其中的一个：$x_1,x_1+d_1,x_1+2d_1,\cdots,x_1+len*d_1$。</p>
+<p>考虑求出在 $\bmod x_1$ 意义下的同余最短路。其实可以发现，所有的转移会将序列分为 $\gcd(x_1,d_1)$ 个环。从环上 $dis$ 最小的点开始转移即可。</p>
+<p>考虑现在新加入了：$x_2,x_2+d_2,x_2+2d_2,\cdots,x_2+len*d_2$。</p>
+<p>那么现在的模数要切换到 $x_2$。可以发现首先有  $dis’_{dis_i \bmod x2}=dis_i$ 但这样转移是会漏情况的，因为还有 $dis_i+k*x_1$ 的转移。这样直接再在 $\bmod x_2$ 意义下跑一遍同余最短路就行了。</p>
+<p>之后继续像之前那样考虑 $\bmod x_2$ 意义下的同余最短路即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">#define il inline</span><br><span class="line">#define rg register</span><br><span class="line">#define int long long</span><br><span class="line">il int read()</span><br><span class="line">&#123;</span><br><span class="line">	int k&#x3D;1,re&#x3D;0;char ch&#x3D;getchar();</span><br><span class="line">	while(ch&gt;&#39;9&#39;||ch&lt;&#39;0&#39;)&#123;if(ch&#x3D;&#x3D;&#39;-&#39;)k&#x3D;-1;ch&#x3D;getchar();&#125;</span><br><span class="line">	while(ch&lt;&#x3D;&#39;9&#39;&amp;&amp;ch&gt;&#x3D;&#39;0&#39;)&#123;re&#x3D;re*10+ch-48;ch&#x3D;getchar();&#125;</span><br><span class="line">	return re*k;</span><br><span class="line">&#125;</span><br><span class="line">il void write(int x)</span><br><span class="line">&#123;</span><br><span class="line">	if(x&lt;0)return putchar(&#39;-&#39;),write(-x),void();</span><br><span class="line">	if(x&lt;&#x3D;9)return putchar(x+48),void();</span><br><span class="line">	return write(x&#x2F;10),write(x%10),void();</span><br><span class="line">&#125;</span><br><span class="line">int n,T,W,nxt[500005],f[500005],las;</span><br><span class="line">char s[500005];</span><br><span class="line">int b[500005],lb;</span><br><span class="line">const int M&#x3D;998244353;</span><br><span class="line">void getb()</span><br><span class="line">&#123;</span><br><span class="line">	int k&#x3D;0;</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		while(k&amp;&amp;s[i]!&#x3D;s[k+1])k&#x3D;nxt[k];</span><br><span class="line">		nxt[i]&#x3D;(s[i]&#x3D;&#x3D;s[k+1])?++k:0;</span><br><span class="line">	&#125;</span><br><span class="line">	while(k)</span><br><span class="line">	&#123;</span><br><span class="line">		b[++lb]&#x3D;n-k;</span><br><span class="line">		k&#x3D;nxt[k];</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">int gcd(int u,int v)</span><br><span class="line">&#123;</span><br><span class="line">	if(!v)return u;</span><br><span class="line">	return gcd(v,u%v);</span><br><span class="line">&#125;</span><br><span class="line">int st[1000005],ls,p[500005],Q[500005],lq,w[500005],tl,hd,pos[500005];</span><br><span class="line">void tomod(int x)</span><br><span class="line">&#123;</span><br><span class="line">	int g&#x3D;gcd(x,las);</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;las;i++)</span><br><span class="line">		p[i]&#x3D;f[i];</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;x;i++)</span><br><span class="line">		f[i]&#x3D;0x3f3f3f3f3f3f3f3f;</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;las;i++)</span><br><span class="line">		f[p[i]%x]&#x3D;min(p[i],f[p[i]%x]);</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;g;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ls&#x3D;0;st[++ls]&#x3D;i;int now&#x3D;(i+las)%x;</span><br><span class="line">		while(st[1]!&#x3D;now)</span><br><span class="line">		&#123;</span><br><span class="line">			st[++ls]&#x3D;now;</span><br><span class="line">			now&#x3D;(now+las)%x;</span><br><span class="line">		&#125;</span><br><span class="line">		for(rg int j&#x3D;1;j&lt;&#x3D;ls;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			st[ls+j]&#x3D;st[j];</span><br><span class="line">		&#125;</span><br><span class="line">		ls&lt;&lt;&#x3D;1;</span><br><span class="line">		for(rg int j&#x3D;2;j&lt;&#x3D;ls;j++)</span><br><span class="line">			f[st[j]]&#x3D;min(f[st[j-1]]+las,f[st[j]]);</span><br><span class="line">	&#125;</span><br><span class="line">	las&#x3D;x;</span><br><span class="line">&#125;</span><br><span class="line">void sol(int x,int sz,int d)</span><br><span class="line">&#123;</span><br><span class="line">	int g&#x3D;gcd(x,d);</span><br><span class="line">	tomod(x);</span><br><span class="line">	</span><br><span class="line">	if(d&lt;0)return;</span><br><span class="line">	for(rg int i&#x3D;0;i&lt;g;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		ls&#x3D;lq&#x3D;0;Q[++lq]&#x3D;i;int now&#x3D;(i+d)%x,tt&#x3D;1;</span><br><span class="line">		while(Q[1]!&#x3D;now)</span><br><span class="line">		&#123;</span><br><span class="line">			if(f[Q[tt]]&gt;f[now])tt&#x3D;lq+1;</span><br><span class="line">			Q[++lq]&#x3D;now;now&#x3D;(now+d)%x;</span><br><span class="line">		&#125;</span><br><span class="line">		for(rg int j&#x3D;tt;j&lt;&#x3D;lq;j++)</span><br><span class="line">			st[++ls]&#x3D;Q[j];</span><br><span class="line">		for(rg int j&#x3D;1;j&lt;tt;j++)</span><br><span class="line">			st[++ls]&#x3D;Q[j];</span><br><span class="line">		hd&#x3D;tl&#x3D;0;</span><br><span class="line">		w[0]&#x3D;f[st[1]]-d;pos[0]&#x3D;1;</span><br><span class="line">		for(rg int j&#x3D;2;j&lt;&#x3D;ls;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			while(hd&lt;&#x3D;tl&amp;&amp;pos[hd]&lt;j-sz)hd++;</span><br><span class="line">			if(hd&lt;&#x3D;tl)f[st[j]]&#x3D;min(f[st[j]],w[hd]+j*d+x);</span><br><span class="line">			while(hd&lt;&#x3D;tl&amp;&amp;w[tl]&gt;f[st[j]]-j*d)tl--;</span><br><span class="line">			w[++tl]&#x3D;f[st[j]]-j*d;pos[tl]&#x3D;j;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	T&#x3D;read();</span><br><span class="line">	while(T--)</span><br><span class="line">	&#123;</span><br><span class="line">		n&#x3D;read();W&#x3D;read()-n;</span><br><span class="line">		scanf(&quot;%s&quot;,s+1);lb&#x3D;0;</span><br><span class="line">		getb();memset(f,0x3f,sizeof(f));memset(nxt,0,sizeof(nxt));las&#x3D;n;</span><br><span class="line">		f[0]&#x3D;0;b[lb+1]&#x3D;0;</span><br><span class="line">		for(rg int i&#x3D;1,j&#x3D;1;i&lt;&#x3D;lb;i&#x3D;j)</span><br><span class="line">		&#123;</span><br><span class="line">			while(b[i+1]-b[i]&#x3D;&#x3D;b[j+1]-b[j])j++;</span><br><span class="line">			sol(b[i],j-i-1,b[i+1]-b[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		int ans&#x3D;0;</span><br><span class="line">		for(rg int i&#x3D;0;i&lt;las;i++)</span><br><span class="line">		&#123;</span><br><span class="line">			if(f[i]&lt;&#x3D;W)</span><br><span class="line">				ans+&#x3D;(W-f[i])&#x2F;las+1;</span><br><span class="line">		&#125;</span><br><span class="line">		write(ans);puts(&quot;&quot;);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/3019823.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/3019698.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/3019821.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/3019800.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/3019817.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/3019702.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/3019726.mp3'></li>
+                        
+                    
+                        
+                            <li title='7' data-url='https://link.hhtjim.com/163/3019706.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci='9080672f95b25e9f0bd3'
+        data-cs='32cfadfff2a5e03674675ebeb72b5c7ddbf5f6f2'
+        data-r='clamee.github.io'
+        data-o='clamee'
+        data-a='clamee'
+        data-d=''
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>!-->
+
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>
