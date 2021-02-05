@@ -69,6 +69,24 @@
       </tags>
   </entry>
   <entry>
+    <title>【游记】WC2021 游记</title>
+    <url>/2021/02/05/%E3%80%90%E6%B8%B8%E8%AE%B0%E3%80%91WC2021-%E6%B8%B8%E8%AE%B0/</url>
+    <content><![CDATA[<h4 id="DAY-1-DAY-4"><a href="#DAY-1-DAY-4" class="headerlink" title="DAY 1-DAY 4"></a>DAY 1-DAY 4</h4><p>听课听不懂，自闭力。前几天感觉那个 IOI 题选讲还蛮有意思的，DAY 4 的课就完全听不懂，直接打了一天的 pokemonshowdown。</p>
+<h4 id="DAY-5"><a href="#DAY-5" class="headerlink" title="DAY 5"></a>DAY 5</h4><p>今天其实考的不是很好，但整体上也还是能接受。</p>
+<p>一开始把所有题都看了一遍，感觉 T1 很像 HNOI2019 校园旅行，T2 很像 HNOI2018 寻宝游戏。因为这两个题我都做过，所以就对这两个题有了一个大致的构思。</p>
+<p>然后觉得 T3 好像特别可做，所以一顿乱推+excrt 打完花了 3h 左右，但是写挂了一直没调出来，此时相当于我花三个小时拿了 40pts。</p>
+<p>感觉时间有点紧，就回手把 T2 50 +T1 32的傻逼暴力随手打完。大概还剩 1h 左右。想了想 T1 的其他部分分，感觉 T1 的其它保证特别诡异，不太好写，T2 的话因为寻宝游戏的做法我好像不太记得了，就没有继续深挖。</p>
+<p>回去调 T3，发现 excrt 时我的一个特判写挂了，于是改了改，就过了所有的样例，到这里期望的分 32+50+100，感觉很不错。</p>
+<p>最后半个小时我干了一个 -20pts 的神必操作。我希望 T3 的分拿得更加稳妥，于是我就加了个 &lt;=1000 的特判，并且自信地将循环节长度设成了 m。</p>
+<p>出来期望得分 32+50+80，自己玩崩了。</p>
+<p>考完芙卡米说 T2 的暴力分好像有 70，绿水青山把 T2 切掉了。</p>
+<p>感觉我又全组垫底了。没办法，技不如人吧。</p>
+]]></content>
+      <tags>
+        <tag>游记</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【题解】[FJOI2016]神秘数</title>
     <url>/2020/10/17/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91-FJOI2016-%E7%A5%9E%E7%A7%98%E6%95%B0/</url>
     <content><![CDATA[<blockquote>
@@ -145,6 +163,31 @@
       </tags>
   </entry>
   <entry>
+    <title>【题解】CF1139D Steps to One</title>
+    <url>/2021/01/28/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91CF1139D-Steps-to-One/</url>
+    <content><![CDATA[<p>我有一个不一样的推式子方法。</p>
+<p>先将问题转换一下，假设当前的 gcd $x=p1^{k1}p2^{k2}\cdots$，即为求：</p>
+<script type="math/tex; mode=display">
+E(\max(\forall i,\min(k_i)=0))</script><p>不妨将每个质数 $p$ 看成一个物品，</p>
+<p>假设 $x$ 是新插入集合的数，不妨将 $x$ 看成一个这样的操作：</p>
+<ul>
+<li>将与 $x$ 互质的物品取走。</li>
+</ul>
+<p>现在问题转化成了一个取物品的的问题，即为求：</p>
+<script type="math/tex; mode=display">
+E(\max(S))</script><p>那么直接 Min-max 容斥：</p>
+<script type="math/tex; mode=display">
+E(max(S)=\sum_{T\in S}(-1)^{|T|+1}E(min(T)=\sum_{T\in S}(-1)^{|T+1|}\frac{1}{P(T)}</script><p>考虑当 $\prod_{x\in T}x&gt;n$ 时 $P(T)=1$，且 $x$ 为质数，于是可以将式子改写:</p>
+<script type="math/tex; mode=display">
+E(max(S))=\sum_{T\in S}(-1)^{|T|+1}-\sum_{i=2}^n \mu(i)+\sum_{i=2}^n \mu(i)\lfloor\frac{n}{i}\rfloor=1-\sum_{i=2}^n \mu(i)+\sum_{i=2}^n \mu(i)\lfloor\frac{n}{i}\rfloor</script><p>然后问题就解决了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int qmod(int x,int y)</span><br><span class="line">&#123;</span><br><span class="line">	int ans&#x3D;1;</span><br><span class="line">	while(y)</span><br><span class="line">	&#123;</span><br><span class="line">		if(y&amp;1)(ans*&#x3D;x)%&#x3D;M;</span><br><span class="line">		(x*&#x3D;x)%&#x3D;M;</span><br><span class="line">		y&gt;&gt;&#x3D;1;</span><br><span class="line">	&#125;</span><br><span class="line">	return ans;</span><br><span class="line">&#125;</span><br><span class="line">signed main()</span><br><span class="line">&#123;</span><br><span class="line">	n&#x3D;read();</span><br><span class="line">	int inv&#x3D;qmod(n,M-2);</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(!vis[i])p[++len]&#x3D;i,u[i]&#x3D;1;</span><br><span class="line">		for(rg int j&#x3D;1;j&lt;&#x3D;len&amp;&amp;p[j]*i&lt;&#x3D;n;j++)</span><br><span class="line">		&#123;</span><br><span class="line">			vis[i*p[j]]&#x3D;1;</span><br><span class="line">			if(i%p[j]&#x3D;&#x3D;0)break;</span><br><span class="line">			u[i*p[j]]&#x3D;-u[i];</span><br><span class="line">		&#125;</span><br><span class="line">		sum&#x3D;(sum-u[i]+M)%M;</span><br><span class="line">	&#125;</span><br><span class="line">	for(rg int i&#x3D;2;i&lt;&#x3D;n;i++)</span><br><span class="line">	&#123;</span><br><span class="line">		if(u[i]&#x3D;&#x3D;0)continue;</span><br><span class="line">		mul[i]&#x3D;n*qmod(n-n&#x2F;i,M-2);</span><br><span class="line">		sum&#x3D;(sum+u[i]*mul[i]%M+M)%M;</span><br><span class="line">	&#125;</span><br><span class="line">	write((sum+1)%M);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>容斥</tag>
+        <tag>数论</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>【题解】NOI2014 魔法森林</title>
     <url>/2020/12/27/%E3%80%90%E9%A2%98%E8%A7%A3%E3%80%91NOI2014-%E9%AD%94%E6%B3%95%E6%A3%AE%E6%9E%97/</url>
     <content><![CDATA[<p>题目大意：</p>
@@ -161,6 +204,11 @@
         <tag>分块</tag>
         <tag>并查集</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>从零开始学数论</title>
+    <url>/2021/01/21/%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E5%AD%A6%E6%95%B0%E8%AE%BA/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>二次剩余学习笔记</title>
