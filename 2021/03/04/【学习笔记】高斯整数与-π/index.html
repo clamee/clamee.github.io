@@ -1,0 +1,249 @@
+
+<!DOCTYPE html>
+<html lang="zh-HK" class="loading">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>【学习笔记】高斯整数与 π - Clamee&#39;s Blog</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate" />
+    <meta name="keywords" content="Clamee,"> 
+    <meta name="description" content="今天看了一个很经典的题目 link。
+本博客会讨论一些与圆上整点技术相关的公式。
+这十分有趣，所以就来整理一下：
+
+ 求以原点为圆心，半径为 $\sqrt{R}$ 的圆的圆周上有多少个点的坐标均是整,"> 
+    <meta name="author" content="Clamee"> 
+    <link rel="alternative" href="atom.xml" title="Clamee&#39;s Blog" type="application/atom+xml"> 
+    <link rel="icon" href="/img/clam2.png"> 
+    
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+
+    
+<link rel="stylesheet" href="/css/diaspora.css">
+
+	<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+         (adsbygoogle = window.adsbygoogle || []).push({
+              google_ad_client: "ca-pub-8691406134231910",
+              enable_page_level_ads: true
+         });
+    </script>
+    <script async custom-element="amp-auto-ads"
+        src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js">
+    </script>
+<meta name="generator" content="Hexo 5.2.0"></head>
+
+<body class="loading">
+    <span id="config-title" style="display:none">Clamee&#39;s Blog</span>
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="iconfont icon-home image-icon" href="javascript:;" data-url="http://example.com"></a>
+    <div title="播放/暂停" class="iconfont icon-play"></div>
+    <h3 class="subtitle">【学习笔记】高斯整数与 π</h3>
+    <div class="social">
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="iconfont icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+
+    <div class="section">
+        <div class="article">
+    <div class='main'>
+        <h1 class="title">【学习笔记】高斯整数与 π</h1>
+        <div class="stuff">
+            <span>三月 04, 2021</span>
+            
+  <ul class="post-tags-list" itemprop="keywords"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/%E6%95%B0%E5%AD%A6/" rel="tag">数学</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <p>今天看了一个很经典的题目 <a target="_blank" rel="noopener" href="https://www.luogu.com.cn/problem/P2508">link</a>。</p>
+<p>本博客会讨论一些与圆上整点技术相关的公式。</p>
+<p>这十分有趣，所以就来整理一下：</p>
+<blockquote>
+<p> 求以原点为圆心，半径为 $\sqrt{R}$ 的圆的圆周上有多少个点的坐标均是整数。</p>
+</blockquote>
+<p>1、找规律</p>
+<p>不妨先打出前几项的表。</p>
+<p>$1,4,0,4,8,0,0,4,4,8,0,0,8,0,0,4,0\cdots$。</p>
+<p>令人惊讶的发现，当 $n=4<em>k+3$ 且 $n$ 为质数的时候答案为 $0$，当 $n=4</em>k+1$ 且 $n$ 为质数的时候答案不为 $0$。</p>
+<p>2、性质</p>
+<p>根据定义可知，原方程相当于是询问存在多少组整数解 (x,y)，满足 $x^2+y^2=r^2$。因为这样的点对实际上是在一个复平面上，如图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jhrjr19u.png" alt=""></p>
+<p>不放在复平面上考虑这个问题：</p>
+<p>$(x+yi)(x-yi)=x^2+y^2$，$x^2+y^2=R$。</p>
+<p>所以我们可以把所有的 $R$ 表示为两个复数分解的形式。</p>
+<p>考虑整数的分解是<strong>几乎唯一的</strong>。</p>
+<p>即 $x=p1p2p3p4\cdots pn$，其中 $pi$ 是质数。那么我们只能同时将两个数乘 $-1$。</p>
+<p>扩展到复数域上有 对于一个复数的分解，唯一能做的就是将两个数同乘 $-1,-i$。</p>
+<p>现在来考虑原问题，即将 R 分解的问题。考虑到将  R 分解等价于将 R 的每个质因子分解。</p>
+<p>考虑到一个性质即所有 $4n+1$ 型的质数可以被分解为 $(2n+i)(2n-i)$ 所以对于每个 $p^k$，可以为答案提供 $k+1$ 的贡献。另外对于 $4n+3$ 型整数，即高斯整数，如果数量为偶数，贡献为 $1$，否则贡献为 $0$。值得注意的是 $2$，它与 -i,-1 的意义相同，不造成贡献。</p>
+<p>于是就得到了一个解决方案。</p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="true">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        
+                            <li title='0' data-url='https://link.hhtjim.com/163/3019823.mp3'></li>
+                        
+                    
+                        
+                            <li title='1' data-url='https://link.hhtjim.com/163/3019698.mp3'></li>
+                        
+                    
+                        
+                            <li title='2' data-url='https://link.hhtjim.com/163/3019821.mp3'></li>
+                        
+                    
+                        
+                            <li title='3' data-url='https://link.hhtjim.com/163/3019800.mp3'></li>
+                        
+                    
+                        
+                            <li title='4' data-url='https://link.hhtjim.com/163/3019817.mp3'></li>
+                        
+                    
+                        
+                            <li title='5' data-url='https://link.hhtjim.com/163/3019702.mp3'></li>
+                        
+                    
+                        
+                            <li title='6' data-url='https://link.hhtjim.com/163/3019726.mp3'></li>
+                        
+                    
+                        
+                            <li title='7' data-url='https://link.hhtjim.com/163/3019706.mp3'></li>
+                        
+                    
+                </ul>
+            
+        </div>
+        
+    <div id='gitalk-container' class="comment link"
+		data-enable='true'
+        data-ae='false'
+        data-ci='9080672f95b25e9f0bd3'
+        data-cs='32cfadfff2a5e03674675ebeb72b5c7ddbf5f6f2'
+        data-r='clamee.github.io'
+        data-o='clamee'
+        data-a='clamee'
+        data-d=''
+    >查看评论</div>
+
+
+    </div>
+    
+        <div class='side'>
+				
+        </div>
+    
+</div>
+
+
+    </div>
+</div>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+<!--<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>!-->
+
+</body>
+
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/typed.js"></script>
+<script src="/js/diaspora.js"></script>
+
+
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+
+
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</html>

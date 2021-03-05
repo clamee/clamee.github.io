@@ -6,7 +6,7 @@
   <link href="http://example.com/atom.xml" rel="self"/>
   
   <link href="http://example.com/"/>
-  <updated>2021-02-05T11:40:48.386Z</updated>
+  <updated>2021-03-05T07:00:08.881Z</updated>
   <id>http://example.com/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【学习笔记】高斯整数与 π</title>
+    <link href="http://example.com/2021/03/04/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%AB%98%E6%96%AF%E6%95%B4%E6%95%B0%E4%B8%8E-%CF%80/"/>
+    <id>http://example.com/2021/03/04/%E3%80%90%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%E3%80%91%E9%AB%98%E6%96%AF%E6%95%B4%E6%95%B0%E4%B8%8E-%CF%80/</id>
+    <published>2021-03-04T13:23:14.000Z</published>
+    <updated>2021-03-05T07:00:08.881Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天看了一个很经典的题目 <a href="https://www.luogu.com.cn/problem/P2508">link</a>。</p><p>本博客会讨论一些与圆上整点技术相关的公式。</p><p>这十分有趣，所以就来整理一下：</p><blockquote><p> 求以原点为圆心，半径为 $\sqrt{R}$ 的圆的圆周上有多少个点的坐标均是整数。</p></blockquote><p>1、找规律</p><p>不妨先打出前几项的表。</p><p>$1,4,0,4,8,0,0,4,4,8,0,0,8,0,0,4,0\cdots$。</p><p>令人惊讶的发现，当 $n=4<em>k+3$ 且 $n$ 为质数的时候答案为 $0$，当 $n=4</em>k+1$ 且 $n$ 为质数的时候答案不为 $0$。</p><p>2、性质</p><p>根据定义可知，原方程相当于是询问存在多少组整数解 (x,y)，满足 $x^2+y^2=r^2$。因为这样的点对实际上是在一个复平面上，如图：</p><p><img src="https://cdn.luogu.com.cn/upload/image_hosting/jhrjr19u.png" alt=""></p><p>不放在复平面上考虑这个问题：</p><p>$(x+yi)(x-yi)=x^2+y^2$，$x^2+y^2=R$。</p><p>所以我们可以把所有的 $R$ 表示为两个复数分解的形式。</p><p>考虑整数的分解是<strong>几乎唯一的</strong>。</p><p>即 $x=p1p2p3p4\cdots pn$，其中 $pi$ 是质数。那么我们只能同时将两个数乘 $-1$。</p><p>扩展到复数域上有 对于一个复数的分解，唯一能做的就是将两个数同乘 $-1,-i$。</p><p>现在来考虑原问题，即将 R 分解的问题。考虑到将  R 分解等价于将 R 的每个质因子分解。</p><p>考虑到一个性质即所有 $4n+1$ 型的质数可以被分解为 $(2n+i)(2n-i)$ 所以对于每个 $p^k$，可以为答案提供 $k+1$ 的贡献。另外对于 $4n+3$ 型整数，即高斯整数，如果数量为偶数，贡献为 $1$，否则贡献为 $0$。值得注意的是 $2$，它与 -i,-1 的意义相同，不造成贡献。</p><p>于是就得到了一个解决方案。</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;今天看了一个很经典的题目 &lt;a href=&quot;https://www.luogu.com.cn/problem/P2508&quot;&gt;link&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;本博客会讨论一些与圆上整点技术相关的公式。&lt;/p&gt;
+&lt;p&gt;这十分有趣，所以就来整理一下：&lt;/p&gt;
+&lt;blockquo</summary>
+      
+    
+    
+    
+    
+    <category term="数学" scheme="http://example.com/tags/%E6%95%B0%E5%AD%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>【游记】WC2021 游记</title>
